@@ -11,6 +11,15 @@
 |
 */
 
+// Departamentos y localidades
+
+Route::get('departamentos/listar', 'DepartamentoController@listar')->name('departamentos.listar');
+
+Route::get('localidades/localidadesdepartamento/{id}', 'LocalidadController@localidadesdepartamento')->name('localidades.localidadesdepartamento');
+
+
 // Personas
 
 Route::get('/', 'PersonaController@index')->name('inicio');
+
+Route::resource('personas', 'PersonaController');

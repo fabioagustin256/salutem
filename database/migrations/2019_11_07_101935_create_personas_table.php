@@ -15,10 +15,10 @@ class CreatePersonasTable extends Migration
     {
         Schema::create('personas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->Integer('dni')->nullable();
+            $table->Integer('dni');
             $table->string('apellido', 50);
             $table->string('nombre', 50);
-            $table->date('fecha_nacimiento');
+            $table->date('fecha_nacimiento')->nullable();
             $table->enum('sexo', ['Sin información', 'Masculino', 'Femenino'])->nullable();
             $table->enum('estado_civil', 
                         ['Sin información', 'Soltero/a', 'Casado/a', 'Viudo/a'])

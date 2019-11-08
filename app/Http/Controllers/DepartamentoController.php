@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class DepartamentoController extends Controller
 {
-    public function departamentosprovincia($id){
+    public function listar($id){
         return Departamento::where('provincia_id', $id)->get();
     }
 }
