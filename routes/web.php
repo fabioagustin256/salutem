@@ -11,4 +11,6 @@
 |
 */
 
+// Personas
+
 Route::get('/', 'PersonaController@index')->name('inicio');
