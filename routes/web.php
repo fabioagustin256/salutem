@@ -11,6 +11,4 @@
 |
 */
 
-Route::get('/', function () {
-    return view('plantilla');
-});
+Route::get('/', 'PersonaController@index')->name('inicio');

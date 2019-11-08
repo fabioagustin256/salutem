@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Persona;
 use Illuminate\Http\Request;
 
+function cargar_personas()
+{
+    return Persona::where('estado', true)->orderBy('apellido')->paginate(20);
+}
+
 class PersonaController extends Controller
 {
     /**
@@ -14,7 +19,9 @@ class PersonaController extends Controller
      */
     public function index()
     {
-        //
+        $personas = cargar_personas();
+        $opciones = true;
+        return view('personas.listar', compact('personas', 'opciones'));
     }
 
     /**
