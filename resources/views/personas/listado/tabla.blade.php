@@ -24,7 +24,7 @@
                     @include('personas.listado.campostabla', ['personas'=>$personas])
                     @isset($opciones)                        
                         <td class="text-center">
-
+                            <a class="btn btn-warning btn-sm" href="{{ route('personas.edit', $persona) }}" role="button">Editar</a>
                         </td>
                     @endisset
                 </tr>
