@@ -8,6 +8,9 @@ function elegirlocalidad(ruta, ruta2, campo){
                 texto += '<option value="' + data[i].id + '">' + data[i].nombre + '</option>';                            
             }
             $('#departamento').html(texto);                        
+        }, 
+        error: function(data){
+            console.log(data);
         }
     });
 
