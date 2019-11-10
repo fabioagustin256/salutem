@@ -18,8 +18,12 @@ Route::get('departamentos/listar', 'DepartamentoController@listar')->name('depar
 Route::get('localidades/localidadesdepartamento/{id}', 'LocalidadController@localidadesdepartamento')->name('localidades.localidadesdepartamento');
 
 
-// Personas
+// Personas, ocupaciones
 
 Route::get('/', 'PersonaController@index')->name('inicio');
 
 Route::resource('personas', 'PersonaController');
+
+Route::get('ocupaciones/listar', 'OcupacionController@listar')->name('ocupaciones.listar');
+
+Route::get('estadosciviles/listar', 'EstadoCivilController@listar')->name('estadosciviles.listar');

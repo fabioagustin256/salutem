@@ -41,6 +41,16 @@
             <input type="text" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" value="{{ isset($persona)?date('d/m/Y', strtotime($persona->fecha_nacimiento)):old('fecha_nacimiento') }}">
         </div>
         <div class="form-group">
+            <label for="estado_civil" class="col-form-label">Estado Civil</label>
+            <div id="estado_civil">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="ocupacion" class="col-form-label">Ocupación</label>
+            <div id="ocupacion">
+            </div>
+        </div>
+        <div class="form-group">
             <label for="telefono_fijo">Teléfono Fijo</label>
             <input type="text" class="form-control" name="telefono_fijo" value="{{ isset($persona)?$persona->telefono_fijo:old('telefono_fijo') }}">
         </div>
@@ -63,11 +73,14 @@
 
 @section('script')
     <script src="{{ url('js/calendarioes.js') }}"></script>
+    <script src="{{ url('js/elegircampo.js') }}"></script>
     <script src="{{ url('js/elegirlocalidad.js') }}"></script>
 
     <script>
         $(document).ready(function(){
             $("#fecha_nacimiento").datepicker();
+            elegircampo("estado_civil", "{{ route('estadosciviles.listar') }}");
+            elegircampo("ocupacion", "{{ route('ocupaciones.listar') }}");            
             elegirlocalidad("{{ route('departamentos.listar') }}", "{{ route('inicio')}}" + "/localidades/localidadesdepartamento/");
         });
     </script>

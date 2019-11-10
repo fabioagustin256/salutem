@@ -19,6 +19,8 @@ function cargar_persona(Persona $persona, Request $request)
         $persona->apellido = $request->apellido;
         $persona->nombre = $request->nombre;
         $persona->fecha_nacimiento = Carbon::createFromFormat('d/m/Y', $request->fecha_nacimiento)->format('Y-m-d');
+        $persona->ocupacion_id = $request->ocupacion;
+        $persona->estado_civil_id = $request->estado_civil;
         $persona->telefono_fijo = $request->telefono_fijo;
         $persona->telefono_celular = $request->telefono_celular;
         $persona->email = $request->email;
@@ -127,4 +129,5 @@ class PersonaController extends Controller
     {
         //
     }
+
 }

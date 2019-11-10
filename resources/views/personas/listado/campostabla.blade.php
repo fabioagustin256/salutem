@@ -10,7 +10,7 @@
 </td>
 <td class="text-center">
     @if($persona->ocupacion)
-        {{ $persona->ocupacion }}
+        {{ $persona->ocupacion->nombre }}
     @else
         -
     @endif
