@@ -41,6 +41,14 @@
             <input type="text" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" value="{{ isset($persona)?date('d/m/Y', strtotime($persona->fecha_nacimiento)):old('fecha_nacimiento') }}">
         </div>
         <div class="form-group">
+            <label for="sexo" class="col-form-label">Sexo</label>
+            <select name="sexo" id="sexo" class="form-control">
+                <option value="Sin información">Sin información</option>  
+                <option value="Masculino">Masculino</option>  
+                <option value="Femenino">Femenino</option>  
+            </select>
+        </div>
+        <div class="form-group">
             <label for="estado_civil" class="col-form-label">Estado Civil</label>
             <div id="estado_civil">
             </div>
