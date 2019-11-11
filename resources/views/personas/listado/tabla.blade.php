@@ -10,7 +10,6 @@
             <th scope="col">Teléfono Celular</th>
             <th scope="col">Email</th>
             <th scope="col">Localidad</th>
-            <th scope="col">Departamento</th>
             @isset($opciones) 
                 <th scope="col">Opciones</th>
             @endisset
@@ -26,13 +25,13 @@
                         <td class="text-center">
                             <a class="btn btn-warning btn-sm" href="{{ route('personas.edit', $persona) }}" role="button">Editar</a>
                             <a class="btn btn-primary btn-sm" href="{{ route('personas.show', $persona) }}" role="button">Detalle</a>
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#eliminar" data-nombre="{{ $persona->nombre }}" data-apellido="{{ $persona->apellido }}" data-personaid="{{ $persona->id }}">Eliminar</button>
                         </td>
                     @endisset
                 </tr>
             @endforeach
         @else
             <tr class="text-center">
-                <td>-</td>
                 <td>-</td>
                 <td>-</td>
                 <td>-</td>

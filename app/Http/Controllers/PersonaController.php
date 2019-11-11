@@ -126,9 +126,20 @@ class PersonaController extends Controller
      * @param  \App\Persona  $persona
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Persona $persona)
+    public function destroy(Request $request)
     {
-        //
+        $correcto = true;
+        try {
+            $persona = Persona::findorfail($request->personaid);
+            $persona->estado = false;
+            $persona->save();
+            $mensaje = 'Se eliminó a ' . $persona->mostrar();
+        } catch (\Throwable $th) {
+            $correcto = false;
+        }
+        $personas = cargar_personas();
+        $opciones = true;
+        return view('personas.listar', compact('personas', 'mensaje', 'correcto', 'opciones'));
     }
 
 }
