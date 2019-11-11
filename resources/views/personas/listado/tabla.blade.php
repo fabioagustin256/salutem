@@ -25,6 +25,7 @@
                     @isset($opciones)                        
                         <td class="text-center">
                             <a class="btn btn-warning btn-sm" href="{{ route('personas.edit', $persona) }}" role="button">Editar</a>
+                            <a class="btn btn-primary btn-sm" href="{{ route('personas.show', $persona) }}" role="button">Detalle</a>
                         </td>
                     @endisset
                 </tr>

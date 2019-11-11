@@ -43,7 +43,7 @@
         <div class="form-group">
             <label for="sexo" class="col-form-label">Sexo</label>
             <select name="sexo" id="sexo" class="form-control">
-                <option value="Sin información">Sin información</option>  
+                <option value="{{ isset($persona)?$persona->nombre:'Sin información' }}">Sin información</option>  
                 <option value="Masculino">Masculino</option>  
                 <option value="Femenino">Femenino</option>  
             </select>
