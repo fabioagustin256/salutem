@@ -21,7 +21,7 @@
                 <button type="submit" class="btn btn-success">Filtrar</button>
             </form>
         </div>
-        <div class="col-sm-1 text-sm-right">     
+        <div class="col-sm-2 text-sm-right">     
             <a class="btn btn-primary" href="{{ route('personas.create') }}" role="button">Agregar</a>
         </div>
     </div>

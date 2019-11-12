@@ -18,6 +18,17 @@ Route::get('departamentos/listar', 'DepartamentoController@listar')->name('depar
 Route::get('localidades/localidadesdepartamento/{id}', 'LocalidadController@localidadesdepartamento')->name('localidades.localidadesdepartamento');
 
 
+// Administracion 
+
+Route::get('administracion/listar/{clase}', 'AdministracionController@listar')->name('administracion.clase.listar');
+
+Route::post('administracion/agregar/{clase}', 'AdministracionController@agregar')->name('administracion.clase.agregar');
+
+Route::get('administracion/cambiarestado/{clase}/{id}/', 'AdministracionController@cambiarestado')->name('administracion.clase.cambiarestado');
+
+Route::get('administracion/quitar/{clase}/{id}/', 'AdministracionController@quitar')->name('administracion.clase.quitar');
+
+
 // Personas, ocupaciones
 
 Route::get('/', 'PersonaController@index')->name('inicio');
