@@ -4,7 +4,7 @@
 <div>
     <h3>Listado de {{ $clase }}s</h3>
     <br>
-
+    
     <div class="row">
         <div class="col-sm-5">            
             <span  id="tablaclase">

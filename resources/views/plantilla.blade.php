@@ -47,8 +47,13 @@
                                     <li><a class="dropdown-item" href="{{ route('administracion.clase.listar', 'ocupacion') }}"> Ocupaciones </a></li>                                           
                                 </ul>
                             </li>
+                            <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#"> Eliminados </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{ route('personas.listar_eliminados') }}"> Personas </a></li>            
+                                </ul>
+                            </li>  
                         </ul>
-                    </li>                       
+                    </li>                                         
                 </ul>                
             </div>
         </nav>

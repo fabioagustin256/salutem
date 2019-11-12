@@ -17,6 +17,8 @@ function obtener_objetos($clase)
 
 class AdministracionController extends Controller
 {
+    // Campos formularios
+
     public function listar($clase)
     {
         $objetos = obtener_objetos($clase);

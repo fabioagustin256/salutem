@@ -32,6 +32,11 @@ function cargar_persona(Persona $persona, Request $request)
     }    
 }
 
+function cargar_eliminados()
+{
+    return Persona::where('estado', false)->orderBy('apellido')->paginate(20);
+}
+
 function campos_requeridos($request){
     $request->validate([
         'dni' => 'required',
@@ -207,5 +212,30 @@ class PersonaController extends Controller
             $resultado[] = array('id'=>'', 'fila'=>'Sin resultados');   
         }
         return $resultado;
+    }
+
+    public function listar_eliminados()
+    {
+        $personas = cargar_eliminados();
+        $eliminados = true;
+        $opciones = true;
+        return view('personas.listar', compact('personas', 'opciones','eliminados'));
+    }
+
+    public function recuperar_eliminado($id)
+    {
+        $correcto = true;
+        try {
+            $persona = Persona::findorfail($id);
+            $persona->estado = true;
+            $persona->save();
+            $mensaje = 'Se recupero a ' . $persona->mostrar();
+        } catch (\Throwable $th) {
+            $correcto = false;
+        }
+        $personas = cargar_eliminados();
+        $eliminados = true;
+        $opciones = true;
+        return view('personas.listar', compact('personas', 'opciones', 'eliminados', 'mensaje', 'correcto'));
     }
 }

@@ -29,6 +29,12 @@ Route::get('administracion/cambiarestado/{clase}/{id}/', 'AdministracionControll
 Route::get('administracion/quitar/{clase}/{id}/', 'AdministracionController@quitar')->name('administracion.clase.quitar');
 
 
+Route::get('administracion/personas/eliminados/listar', 'PersonaController@listar_eliminados')->name('personas.listar_eliminados');
+
+Route::get('administracion/personas/eliminados/{id}/recuperar', 'PersonaController@recuperar_eliminado')->name('personas.recuperar_eliminado');
+
+
+
 // Personas, ocupaciones
 
 Route::get('/', 'PersonaController@index')->name('inicio');
