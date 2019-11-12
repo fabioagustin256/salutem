@@ -1,3 +1,7 @@
+@isset($correcto)
+	@include('formularios.mensajes', ['mensaje' => $mensaje, 'correcto'=> $correcto])
+@endisset
+
 <table class="table table-bordered table-sm">
     <thead class="thead-dark">
         <tr class="text-center">
@@ -6,10 +10,8 @@
             <th scope="col">Nombre</th>
             <th scope="col">Fec. nacimiento</th>
             <th scope="col">Ocupación</th>
-            <th scope="col">Teléfono Fijo</th>
-            <th scope="col">Teléfono Celular</th>
-            <th scope="col">Email</th>
             <th scope="col">Localidad</th>
+            <th scope="col">Departamento</th>
             @isset($opciones) 
                 <th scope="col">Opciones</th>
             @endisset
@@ -32,8 +34,6 @@
             @endforeach
         @else
             <tr class="text-center">
-                <td>-</td>
-                <td>-</td>
                 <td>-</td>
                 <td>-</td>
                 <td>-</td>

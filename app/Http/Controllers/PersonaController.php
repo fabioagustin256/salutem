@@ -142,4 +142,70 @@ class PersonaController extends Controller
         return view('personas.listar', compact('personas', 'mensaje', 'correcto', 'opciones'));
     }
 
+    public function filtrar(Request $request)
+    {   
+        $correcto = true;
+
+        if ($request->localidad)
+        {
+            $personas = Persona::where('localidad_id', $request->localidad);
+           
+        }
+        else 
+        {
+            if($request->departamento)
+            {
+                $personas = Persona::select('personas.*')->join('localidades', 'localidades.id', '=', 'personas.localidad_id')
+                ->join('departamentos', 'departamentos.id', '=', 'localidades.departamento_id')
+                ->where('departamentos.id', $request->departamento);    
+            }
+
+        }       
+        
+        if($request->buscarid)
+        {
+            $personas = Persona::where('id', $request->buscarid);
+        }
+
+        if(isset($personas))
+        {
+            $personas = $personas->where('estado', true)->orderBy('apellido')->paginate(20);
+            $mensaje = "Se aplicaron los filtros exitosamente";
+        }
+        else 
+        {   
+            $personas = cargar_personas();
+            $correcto = false;
+            if(!isset($mensaje))
+            {
+                $mensaje = "Debe elegir al menos un filtro";
+            }
+        }
+        $opciones = true;
+        return view('personas.listado.tabla', compact('personas', 'opciones', 'correcto', 'mensaje'));
+    }
+
+    public function resetearfiltrospersonas()
+    {
+        $personas = cargar_personas();
+        $opciones = true;
+        return view('personas.listado.tabla', compact('personas', 'opciones'));
+    }
+
+    public function buscar(Request $request)
+    {
+        $busqueda = $request->get('term');
+        $personas = Persona::where('nombre', 'LIKE', '%' . $busqueda. '%')->orwhere('apellido', 'LIKE', '%' . $busqueda. '%');
+        $personas = $personas->where('estado', true)->orderBy('apellido')->get();
+        $resultado = array();
+        if(!$personas->isEmpty()){
+            foreach ($personas as $persona){
+                $persona = Persona::find($persona->id);
+                $resultado[] = array('id'=>$persona->id, 'fila'=>$persona->mostrar());      
+            }
+        } else {
+            $resultado[] = array('id'=>'', 'fila'=>'Sin resultados');   
+        }
+        return $resultado;
+    }
 }

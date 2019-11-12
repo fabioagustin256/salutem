@@ -15,25 +15,6 @@
         -
     @endif
 </td>
-<td class="text-center">
-    @if($persona->telefono_fijo)
-        {{ $persona->telefono_fijo }}
-    @else
-        -
-    @endif
-</td>
-<td class="text-center">
-    @if($persona->telefono_celular)
-        {{ $persona->telefono_celular }}
-    @else
-        -
-    @endif
-</td>
-@if($persona->email)
-    <td> {{ $persona->email }} </td>
-@else
-    <td class="text-center">-</td>
-@endif
 @if (!empty($persona->localidad))
     <td  class="text-center">{{ $persona->localidad->nombre }}</td>
     <td class="text-center">{{ $persona->localidad->departamento->nombre }}</td>

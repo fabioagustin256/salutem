@@ -24,6 +24,12 @@ Route::get('/', 'PersonaController@index')->name('inicio');
 
 Route::resource('personas', 'PersonaController');
 
+Route::get('buscarpersona', 'PersonaController@buscar')->name('buscarpersona');
+
+Route::post('personas/filtarpersonas', 'PersonaController@filtrar')->name('filtrarpersonas');
+
+Route::get('resetearfiltrospersonas', 'PersonaController@resetearfiltrospersonas')->name('resetearfiltrospersonas');
+
 Route::get('ocupaciones/listar', 'OcupacionController@listar')->name('ocupaciones.listar');
 
 Route::get('estadosciviles/listar', 'EstadoCivilController@listar')->name('estadosciviles.listar');

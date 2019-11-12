@@ -4,11 +4,22 @@
 
     <h3>Listado de personas</h3>
 
+    <br>
+                
+    @include('personas.listado.filtros')       
+    
     <br><br>
 
     <div class="row">
-        <div class="col-sm-11">
- 
+        <div class="col-sm-6">
+            <form method="POST" id="buscarpersona">
+                @csrf
+
+                @include('formularios.autocompletado', ['campo'=>'buscar'])           
+        </div>
+        <div class="col-sm-4">
+                <button type="submit" class="btn btn-success">Filtrar</button>
+            </form>
         </div>
         <div class="col-sm-1 text-sm-right">     
             <a class="btn btn-primary" href="{{ route('personas.create') }}" role="button">Agregar</a>
@@ -49,10 +60,19 @@
 @endsection
 
 @section('script')
+    <script src="{{ url('js/elegirlocalidad.js') }}"></script>
+    <script src="{{ url('js/filtrar.js') }}"></script>
+    <script src="{{ url('js/resetearfiltrospersonas.js') }}"></script>
+    <script src="{{ url('js/autocompletar.js') }}"></script>
     <script src="{{ url('js/quitaritem.js') }}"></script>
 
     <script>
         $(document).ready(function(){
+            elegirlocalidad("{{ route('departamentos.listar') }}", "{{ route('inicio')}}" + "/localidades/localidadesdepartamento/");
+            filtrar("{{ route('filtrarpersonas') }}", "#filtrospersonas", "#tablapersonas");
+            autocompletar("#buscar", "{{ route('buscarpersona') }}");
+            filtrar("{{ route('filtrarpersonas') }}", "#buscarpersona", "#tablapersonas");  
+
             $("#eliminar").on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget);
                 var personaid = button.data('personaid');
