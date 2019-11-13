@@ -28,7 +28,8 @@
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="{{ route('administracion.clase.listar', array('clase'=>'ocupacion', 'plural'=>'ocupaciones')) }}"> Ocupación </a></li>                                           
                                     <li><a class="dropdown-item" href="{{ route('administracion.clase.listar', array('clase'=>'estadocivil', 'plural'=>'estados civiles')) }}"> Estado Civil </a></li>
-                                    <li><a class="dropdown-item" href="{{ route('administracion.clase.listar', array('clase'=>'medicamento', 'plural'=>'medicamentos')) }}"> Medicamentos </a></li>
+                                    <li><a class="dropdown-item" href="{{ route('administracion.clase.listar', array('clase'=>'obrasocial', 'plural'=>'obras sociales')) }}"> Obra Social </a></li>
+                                    <li><a class="dropdown-item" href="{{ route('administracion.clase.listar', array('clase'=>'medicamento', 'plural'=>'medicamentos')) }}"> Medicamento </a></li>
                                 </ul>
                             </li>
                             <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#"> Eliminados </a>

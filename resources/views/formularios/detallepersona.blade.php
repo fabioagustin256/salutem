@@ -36,6 +36,14 @@ Ocupación:
 @endif
 <br/>
 
+Obra Social: 
+@if($persona->obra_social)
+    {{ $persona->obra_social->nombre }}
+@else
+    -
+@endif
+<br/>
+
 Teléfono Fijo: 
 @if($persona->telefono_fijo)
     {{ $persona->telefono_fijo }}

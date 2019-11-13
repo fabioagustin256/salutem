@@ -16,7 +16,7 @@ class CreateMedicamentosTable extends Migration
         Schema::create('medicamentos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre', 100);
-            $table->boolean('estado')->nullable()->default(true);
+            $table->boolean('estado')->nullable()->default(true); 
             $table->timestamps();
         });
     }

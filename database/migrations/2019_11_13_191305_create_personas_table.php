@@ -24,6 +24,8 @@ class CreatePersonasTable extends Migration
             $table->foreign('estado_civil_id')->references('id')->on('estados_civiles');            
 	        $table->unsignedBigInteger('ocupacion_id')->nullable();
             $table->foreign('ocupacion_id')->references('id')->on('ocupaciones');
+            $table->unsignedBigInteger('obra_social_id')->nullable();
+            $table->foreign('obra_social_id')->references('id')->on('obras_sociales');
             $table->string('telefono_fijo', 50)->nullable();
             $table->string('telefono_celular', 50)->nullable();
             $table->string('email', 50)->nullable();

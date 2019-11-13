@@ -42,7 +42,7 @@ Route::get('administracion/personas/eliminados/{id}/recuperar', 'PersonaControll
 
 
 
-// Personas, ocupaciones
+// Personas, ocupaciones, estados civiles, obras sociales
 
 Route::get('/', 'PersonaController@index')->name('inicio');
 
@@ -54,6 +54,8 @@ Route::post('personas/filtarpersonas', 'PersonaController@filtrar')->name('filtr
 
 Route::get('resetearfiltrospersonas', 'PersonaController@resetearfiltrospersonas')->name('resetearfiltrospersonas');
 
+Route::get('estadosciviles/listar', 'EstadoCivilController@listar')->name('estadosciviles.listar');
+
 Route::get('ocupaciones/listar', 'OcupacionController@listar')->name('ocupaciones.listar');
 
-Route::get('estadosciviles/listar', 'EstadoCivilController@listar')->name('estadosciviles.listar');
+Route::get('obrassociales/listar', 'ObraSocialController@listar')->name('obrassociales.listar');

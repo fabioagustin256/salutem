@@ -20,8 +20,9 @@ function cargar_persona(Persona $persona, Request $request)
         $persona->nombre = $request->nombre;
         $persona->fecha_nacimiento = Carbon::createFromFormat('d/m/Y', $request->fecha_nacimiento)->format('Y-m-d');
         $persona->sexo = $request->sexo;
-        $persona->ocupacion_id = $request->ocupacion;
         $persona->estado_civil_id = $request->estado_civil;
+        $persona->ocupacion_id = $request->ocupacion;
+        $persona->obra_social_id = $request->obra_social;
         $persona->telefono_fijo = $request->telefono_fijo;
         $persona->telefono_celular = $request->telefono_celular;
         $persona->email = $request->email;

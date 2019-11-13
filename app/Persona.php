@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Persona extends Model
 {
-    public function localidad()
+
+
+    public function estado_civil()
     {
-        return $this->belongsTo('App\Localidad');
+        return $this->belongsTo('App\EstadoCivil');
     }
 
     public function ocupacion()
@@ -16,9 +18,14 @@ class Persona extends Model
         return $this->belongsTo('App\Ocupacion');
     }
 
-    public function estado_civil()
+    public function obra_social()
     {
-        return $this->belongsTo('App\EstadoCivil');
+        return $this->belongsTo('App\ObraSocial');
+    }
+
+    public function localidad()
+    {
+        return $this->belongsTo('App\Localidad');
     }
 
     public function mostrar(){

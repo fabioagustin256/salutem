@@ -59,6 +59,11 @@
             </div>
         </div>
         <div class="form-group">
+            <label for="obra_social" class="col-form-label">Obra Social</label>
+            <div id="obra_social">
+            </div>
+        </div>
+        <div class="form-group">
             <label for="telefono_fijo">Teléfono Fijo</label>
             <input type="text" class="form-control" name="telefono_fijo" value="{{ isset($persona)?$persona->telefono_fijo:old('telefono_fijo') }}">
         </div>
@@ -88,7 +93,8 @@
         $(document).ready(function(){
             $("#fecha_nacimiento").datepicker();
             elegircampo("estado_civil", "{{ route('estadosciviles.listar') }}");
-            elegircampo("ocupacion", "{{ route('ocupaciones.listar') }}");            
+            elegircampo("ocupacion", "{{ route('ocupaciones.listar') }}");
+            elegircampo("obra_social", "{{ route('obrassociales.listar') }}");              
             elegirlocalidad("{{ route('departamentos.listar') }}", "{{ route('inicio')}}" + "/localidades/localidadesdepartamento/");
         });
     </script>
