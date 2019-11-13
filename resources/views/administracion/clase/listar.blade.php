@@ -2,7 +2,7 @@
 
 @section('contenido')
 <div>
-    <h3>Listado de {{ $clase }}s</h3>
+    <h3>Listado de {{ $plural }}</h3>
     <br>
     
     <div class="row">

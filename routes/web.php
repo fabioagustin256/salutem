@@ -20,7 +20,7 @@ Route::get('localidades/localidadesdepartamento/{id}', 'LocalidadController@loca
 
 // Administracion 
 
-Route::get('administracion/listar/{clase}', 'AdministracionController@listar')->name('administracion.clase.listar');
+Route::get('administracion/{clase}/listar/{plural}', 'AdministracionController@listar')->name('administracion.clase.listar');
 
 Route::post('administracion/agregar/{clase}', 'AdministracionController@agregar')->name('administracion.clase.agregar');
 

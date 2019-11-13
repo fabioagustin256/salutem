@@ -19,10 +19,10 @@ class AdministracionController extends Controller
 {
     // Campos formularios
 
-    public function listar($clase)
+    public function listar($clase, $plural)
     {
         $objetos = obtener_objetos($clase);
-        return view('administracion.clase.listar', compact('objetos', 'clase'));
+        return view('administracion.clase.listar', compact('objetos', 'clase', 'plural'));
     }
 
     public function agregar($clase, Request $request)
@@ -36,7 +36,7 @@ class AdministracionController extends Controller
                 $objeto->nombre = $request->objeto;
                 $objeto->save();
                 $correcto = true;
-                $mensaje = "Se agregó el/la " . $clase . " exitosamente";
+                $mensaje = "Se agregó correctamente";
             } catch (\Throwable $th) {
                 //throw $th;
             }           
@@ -44,7 +44,7 @@ class AdministracionController extends Controller
         else 
         {
             $correcto = false;
-            $mensaje = "El/La " . $clase . " ya se encuentra registrado";            
+            $mensaje = "El registro ya se encuentra en el listado";            
         }
         $objetos = obtener_objetos($clase);
         return view('administracion.clase.tabla', compact('clase', 'objetos', 'correcto', 'mensaje'));
