@@ -4,9 +4,22 @@
 <div>
     <h3>Listado de {{ $plural }}</h3>
     <br>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <form method="POST" id="buscarclase">
+                @csrf
+
+                @include('formularios.autocompletado', ['campo'=> 'buscar'])           
+        </div>
+        <div class="col-sm-1">
+                <button type="submit" class="btn btn-success">Buscar</button>
+            </form>
+        </div>
+    </div>
     
     <div class="row">
-        <div class="col-sm-5">            
+        <div class="col-sm-7">            
             <span  id="tablaclase">
                 @include('administracion.clase.tabla', ['clase' => $clase, 'objetos' => $objetos])
             </span>
@@ -36,10 +49,12 @@
 @section('script')
     <script src="{{ url('js/agregaritem.js') }}"></script>
     <script src="{{ url('js/quitaritem.js') }}"></script>
+    <script src="{{ url('js/autocompletar.js') }}"></script>
 
     <script>
         $(document).ready(function(){
             agregaritem("#nuevo", "#formnuevo", "{{ route('inicio')}}" + "/administracion/agregar/" + "{{ $clase }}" , "#tablaclase");
+            autocompletar("#buscar", "{{ route('administracion.clase.buscar',  $clase) }}");
         });
     </script>
 @endsection

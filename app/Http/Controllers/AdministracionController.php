@@ -81,4 +81,22 @@ class AdministracionController extends Controller
         $objetos = obtener_objetos($clase);        
         return view('administracion.clase.tabla', compact('clase', 'objetos', 'correcto', 'mensaje'));
     }
+
+    public function buscar($clase, Request $request)
+    {
+        $busqueda = $request->get('term');
+        $modelo = nombre_modelo($clase);
+        $objetos = $modelo::where('nombre', 'LIKE', '%' . $busqueda. '%');
+        $objetos = $objetos->where('estado', true)->orderBy('nombre')->get();
+        $resultado = array();
+        if(!$objetos->isEmpty()){
+            foreach ($objetos as $objeto){
+                $objeto = $modelo::find($objeto->id);
+                $resultado[] = array('id'=>$objeto->id, 'fila'=>$objeto->mostrar());        
+            }
+        } else {
+            $resultado[] = array('id'=>'', 'fila'=>'Sin resultados');   
+        }
+        return $resultado;
+    }
 }

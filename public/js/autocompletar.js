@@ -10,6 +10,9 @@ function autocompletar(campo, ruta){
                 success: function(data){
                     response(data);
                 },
+                error: function(data){
+                    console.log(data);
+                },
             });
         }, 
         minLength: 2,
