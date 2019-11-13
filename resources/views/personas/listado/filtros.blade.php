@@ -2,7 +2,7 @@
     <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
         Filtrar
     </a>
-    <button type="button" class="btn btn-success" onclick="resetearfiltrospersonas('{{ route('resetearfiltrospersonas') }}', '#tablapersonas')">
+    <button type="button" class="btn btn-success" onclick="resetearfiltros('{{ route('resetearfiltrospersonas') }}', '#tablapersonas')">
         Mostrar todo
     </button>
 </p>

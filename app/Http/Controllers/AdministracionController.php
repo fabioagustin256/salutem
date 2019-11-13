@@ -84,8 +84,8 @@ class AdministracionController extends Controller
 
     public function buscar($clase, Request $request)
     {
-        $busqueda = $request->get('term');
         $modelo = nombre_modelo($clase);
+        $busqueda = $request->get('term');
         $objetos = $modelo::where('nombre', 'LIKE', '%' . $busqueda. '%');
         $objetos = $objetos->where('estado', true)->orderBy('nombre')->get();
         $resultado = array();
@@ -98,5 +98,34 @@ class AdministracionController extends Controller
             $resultado[] = array('id'=>'', 'fila'=>'Sin resultados');   
         }
         return $resultado;
+    }
+
+    public function filtrar($clase, Request $request)
+    {   
+        $modelo = nombre_modelo($clase);
+        $correcto = true;      
+        if($request->buscarid)
+        {
+            $objetos = $modelo::where('id', $request->buscarid)->get();
+        }
+
+        if(isset($objetos))
+        {
+            $mensaje = "Se aplicaron los filtros exitosamente";
+        }
+        else 
+        {   
+            $objetos = obtener_objetos($clase);
+            $correcto = false;
+            $mensaje = "Debe completar el campo de busqueda";
+        }
+        return view('administracion.clase.tabla', compact('clase', 'objetos', 'correcto', 'mensaje'));
+    }
+
+    public function resetearfiltrosclase($clase)
+    {
+        $modelo = nombre_modelo($clase);
+        $objetos = obtener_objetos($clase);
+        return view('administracion.clase.tabla', compact('clase', 'objetos'));
     }
 }

@@ -12,14 +12,19 @@
 
                 @include('formularios.autocompletado', ['campo'=> 'buscar'])           
         </div>
-        <div class="col-sm-1">
-                <button type="submit" class="btn btn-success">Buscar</button>
+        <div class="col-sm-1 text-left">
+                <button type="submit" class="btn btn-success">Filtrar</button>
             </form>
+        </div>
+        <div class="col-sm-2 text-right">
+            <button type="button" class="btn btn-success" onclick="resetearfiltros('{{ route('administracion.clase.resetearfiltrosclase', $clase) }}', '#tablaclase')">
+                Mostrar todo
+            </button>
         </div>
     </div>
     
     <div class="row">
-        <div class="col-sm-7">            
+        <div class="col-sm-9">            
             <span  id="tablaclase">
                 @include('administracion.clase.tabla', ['clase' => $clase, 'objetos' => $objetos])
             </span>
@@ -50,11 +55,14 @@
     <script src="{{ url('js/agregaritem.js') }}"></script>
     <script src="{{ url('js/quitaritem.js') }}"></script>
     <script src="{{ url('js/autocompletar.js') }}"></script>
+    <script src="{{ url('js/filtrar.js') }}"></script>
+    <script src="{{ url('js/resetearfiltros.js') }}"></script>
 
     <script>
         $(document).ready(function(){
             agregaritem("#nuevo", "#formnuevo", "{{ route('inicio')}}" + "/administracion/agregar/" + "{{ $clase }}" , "#tablaclase");
             autocompletar("#buscar", "{{ route('administracion.clase.buscar',  $clase) }}");
+            filtrar("{{ route('administracion.clase.filtrar', $clase) }}", "#buscarclase", "#tablaclase");  
         });
     </script>
 @endsection

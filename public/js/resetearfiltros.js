@@ -1,4 +1,4 @@
-function resetearfiltrospersonas(ruta, tabla){               
+function resetearfiltros(ruta, tabla){               
     $.ajax({
         url: ruta, 
         type: 'GET',

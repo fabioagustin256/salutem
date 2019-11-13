@@ -62,7 +62,7 @@
 @section('script')
     <script src="{{ url('js/elegirlocalidad.js') }}"></script>
     <script src="{{ url('js/filtrar.js') }}"></script>
-    <script src="{{ url('js/resetearfiltrospersonas.js') }}"></script>
+    <script src="{{ url('js/resetearfiltros.js') }}"></script>
     <script src="{{ url('js/autocompletar.js') }}"></script>
     <script src="{{ url('js/quitaritem.js') }}"></script>
 
