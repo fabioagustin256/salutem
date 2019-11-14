@@ -1,10 +1,10 @@
 @extends('plantilla')
 
 @section('contenido')
-    <a class="btn btn-primary float-right" href="{{ route('personas.index') }}" role="button">Volver al listado</a>
+    <a class="btn btn-primary float-right" href="{{ route('pacientes.index') }}" role="button">Volver al listado</a>
     <br><br>
     
-    <h5>Ingrese los datos de la persona:</h5>
+    <h5>Ingrese los datos de la paciente:</h5>
 
     <br>
 
@@ -12,10 +12,10 @@
         @include('formularios.mensajes', ['mensaje' => $mensaje, 'correcto'=> $correcto])
     @endisset
 
-    <form action="{{ isset($persona)?route('personas.update', $persona):route('personas.store')}}" method="POST">
+    <form action="{{ isset($paciente)?route('pacientes.update', $paciente):route('pacientes.store')}}" method="POST">
         @csrf
 
-        @isset($persona)
+        @isset($paciente)
             @method('PUT')
         @endisset
 
@@ -26,24 +26,24 @@
 
         <div class="form-group">
             <label for="dni">DNI</label>
-            <input type="text" class="form-control" name="dni" pattern="[0-9]{8}" placeholder="DNI sin puntos(.)" value="{{ isset($persona)?$persona->dni:old('dni') }}">
+            <input type="text" class="form-control" name="dni" pattern="[0-9]{8}" placeholder="DNI sin puntos(.)" value="{{ isset($paciente)?$paciente->dni:old('dni') }}">
         </div>
         <div class="form-group">
             <label for="nombre">Nombre</label>
-            <input type="text" class="form-control" name="nombre" value="{{ isset($persona)?$persona->nombre:old('nombre') }}">
+            <input type="text" class="form-control" name="nombre" value="{{ isset($paciente)?$paciente->nombre:old('nombre') }}">
         </div>
         <div class="form-group">
             <label for="apellido">Apellido</label>
-            <input type="text" class="form-control" name="apellido" value="{{ isset($persona)?$persona->apellido:old('apellido') }}">
+            <input type="text" class="form-control" name="apellido" value="{{ isset($paciente)?$paciente->apellido:old('apellido') }}">
         </div>
         <div class="form-group">
             <label for="fecha" class="col-form-label">Fecha de nacimiento</label>
-            <input type="text" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" value="{{ isset($persona)?date('d/m/Y', strtotime($persona->fecha_nacimiento)):old('fecha_nacimiento') }}">
+            <input type="text" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" value="{{ isset($paciente)?date('d/m/Y', strtotime($paciente->fecha_nacimiento)):old('fecha_nacimiento') }}">
         </div>
         <div class="form-group">
             <label for="sexo" class="col-form-label">Sexo</label>
             <select name="sexo" id="sexo" class="form-control">
-                <option value="{{ isset($persona)?$persona->nombre:'Sin información' }}">Sin información</option>  
+                <option value="{{ isset($paciente)?$paciente->nombre:'Sin información' }}">Sin información</option>  
                 <option value="Masculino">Masculino</option>  
                 <option value="Femenino">Femenino</option>  
             </select>
@@ -65,15 +65,15 @@
         </div>
         <div class="form-group">
             <label for="telefono_fijo">Teléfono Fijo</label>
-            <input type="text" class="form-control" name="telefono_fijo" value="{{ isset($persona)?$persona->telefono_fijo:old('telefono_fijo') }}">
+            <input type="text" class="form-control" name="telefono_fijo" value="{{ isset($paciente)?$paciente->telefono_fijo:old('telefono_fijo') }}">
         </div>
         <div class="form-group">
             <label for="telefono_celular">Teléfono Celular</label>
-            <input type="text" class="form-control" name="telefono_celular" value="{{ isset($persona)?$persona->telefono_celular:old('telefono_celular') }}">
+            <input type="text" class="form-control" name="telefono_celular" value="{{ isset($paciente)?$paciente->telefono_celular:old('telefono_celular') }}">
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" name="email" value="{{ isset($persona)?$persona->email:old('email') }}">
+            <input type="email" class="form-control" name="email" value="{{ isset($paciente)?$paciente->email:old('email') }}">
         </div>
 
         @include('formularios.elegirlocalidad')

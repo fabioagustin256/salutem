@@ -2,17 +2,17 @@
 
 @section('contenido')
 
-    <h3>Listado de personas</h3>
+    <h3>Listado de pacientes</h3>
 
     <br>
                 
-    @include('personas.listado.filtros')       
+    @include('pacientes.listado.filtros')       
     
     <br><br>
 
     <div class="row">
         <div class="col-sm-6">
-            <form method="POST" id="buscarpersona">
+            <form method="POST" id="buscarpaciente">
                 @csrf
 
                 @include('formularios.autocompletado', ['campo'=>'buscar'])           
@@ -22,20 +22,20 @@
             </form>
         </div>
         <div class="col-sm-2 text-sm-right">     
-            <a class="btn btn-primary" href="{{ route('personas.create') }}" role="button">Agregar</a>
+            <a class="btn btn-primary" href="{{ route('pacientes.create') }}" role="button">Agregar</a>
         </div>
     </div>
 
     <br>
             
-    <span id="tablapersonas">
-        @include('personas.listado.tabla', ['personas' => $personas]) 
+    <span id="tablapacientes">
+        @include('pacientes.listado.tabla', ['pacientes' => $pacientes]) 
     </span>
 
     <div class="modal fade" id="eliminar" tabindex="-1" role="dialog" aria-labelledby="eliminarLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form action="{{ route('personas.destroy', 'idpersona') }}" method="POST">
+                <form action="{{ route('pacientes.destroy', 'idpaciente') }}" method="POST">
                     @method('DELETE')
                     @csrf
                     <div class="modal-header">
@@ -46,7 +46,7 @@
                     </div>
                     <div class="modal-body">
                         <div id="mensaje" class="text-center"></div>
-                        <input type="hidden" name="personaid" id="personaid" value="">                   
+                        <input type="hidden" name="pacienteid" id="pacienteid" value="">                   
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary btn-sm">Si</button>
@@ -69,19 +69,19 @@
     <script>
         $(document).ready(function(){
             elegirlocalidad("{{ route('departamentos.listar') }}", "{{ route('inicio')}}" + "/localidades/localidadesdepartamento/");
-            filtrar("{{ route('filtrarpersonas') }}", "#filtrospersonas", "#tablapersonas");
-            autocompletar("#buscar", "{{ route('buscarpersona') }}");
-            filtrar("{{ route('filtrarpersonas') }}", "#buscarpersona", "#tablapersonas");  
+            filtrar("{{ route('filtrarpacientes') }}", "#filtrospacientes", "#tablapacientes");
+            autocompletar("#buscar", "{{ route('buscarpaciente') }}");
+            filtrar("{{ route('filtrarpacientes') }}", "#buscarpaciente", "#tablapacientes");  
 
             $("#eliminar").on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget);
-                var personaid = button.data('personaid');
+                var pacienteid = button.data('pacienteid');
                 var apellido = button.data('apellido');
                 var nombre = button.data('nombre');
                 
                 var modal = $(this);
                 modal.find(".modal-body #mensaje").html("¿Está seguro que desea eliminar a " + nombre + " " + apellido + "?");
-                modal.find(".modal-body #personaid").val(personaid);
+                modal.find(".modal-body #pacienteid").val(pacienteid);
             });          
         });
     </script>

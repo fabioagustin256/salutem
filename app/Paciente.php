@@ -4,10 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Persona extends Model
+class Paciente extends Model
 {
-
-
     public function estado_civil()
     {
         return $this->belongsTo('App\EstadoCivil');

@@ -36,23 +36,23 @@ Route::get('administracion/{clase}/resetearfiltrosclase', 'AdministracionControl
 
 
 
-Route::get('administracion/personas/eliminados/listar', 'PersonaController@listar_eliminados')->name('personas.listar_eliminados');
+Route::get('administracion/pacientes/eliminados/listar', 'PacienteController@listar_eliminados')->name('pacientes.listar_eliminados');
 
-Route::get('administracion/personas/eliminados/{id}/recuperar', 'PersonaController@recuperar_eliminado')->name('personas.recuperar_eliminado');
+Route::get('administracion/pacientes/eliminados/{id}/recuperar', 'PacienteController@recuperar_eliminado')->name('pacientes.recuperar_eliminado');
 
 
 
-// Personas, ocupaciones, estados civiles, obras sociales
+// Pacientes, ocupaciones, estados civiles, obras sociales
 
-Route::get('/', 'PersonaController@index')->name('inicio');
+Route::get('/', 'PacienteController@index')->name('inicio');
 
-Route::resource('personas', 'PersonaController');
+Route::resource('pacientes', 'PacienteController');
 
-Route::get('buscarpersona', 'PersonaController@buscar')->name('buscarpersona');
+Route::get('buscarpaciente', 'PacienteController@buscar')->name('buscarpaciente');
 
-Route::post('personas/filtarpersonas', 'PersonaController@filtrar')->name('filtrarpersonas');
+Route::post('pacientes/filtarpacientes', 'PacienteController@filtrar')->name('filtrarpacientes');
 
-Route::get('resetearfiltrospersonas', 'PersonaController@resetearfiltrospersonas')->name('resetearfiltrospersonas');
+Route::get('resetearfiltrospacientes', 'PacienteController@resetearfiltrospacientes')->name('resetearfiltrospacientes');
 
 Route::get('estadosciviles/listar', 'EstadoCivilController@listar')->name('estadosciviles.listar');
 

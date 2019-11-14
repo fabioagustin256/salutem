@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePersonasTable extends Migration
+class CreatePacientesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePersonasTable extends Migration
      */
     public function up()
     {
-        Schema::create('personas', function (Blueprint $table) {
+        Schema::create('pacientes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->Integer('dni');
             $table->string('apellido', 50);
@@ -32,7 +32,7 @@ class CreatePersonasTable extends Migration
             $table->string('domicilio', 50)->nullable();
             $table->unsignedBigInteger('localidad_id')->nullable();
             $table->foreign('localidad_id')->references('id')->on('localidades');
-            $table->boolean('estado')->nullable()->default(true);   
+            $table->boolean('estado')->nullable()->default(true);  
             $table->timestamps();
         });
     }
@@ -44,6 +44,6 @@ class CreatePersonasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('personas');
+        Schema::dropIfExists('pacientes');
     }
 }
