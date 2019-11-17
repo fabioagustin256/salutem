@@ -10,9 +10,4 @@ class Departamento extends Model
     {
         return $this->belongsTo('App\Provincia');
     }
-
-    public function localidades()
-    {
-        return $this->hasMany('App\Localidad');
-    }
 }

@@ -60,9 +60,10 @@ Teléfono Celular:
 @endif
 <br/>
 
+Email: {{ $paciente->email }} 
+<br/>
 
-Email: {{ $paciente->email }} <br/>
-@if (!empty($paciente->localidad))
-    Localidad: {{ $paciente->localidad->nombre }} <br/>
-    Departamento: {{ $paciente->localidad->departamento->nombre }} <br/>
+@if (!empty($paciente->departamento))
+    Departamento: {{ $paciente->departamento->nombre }} <br/>
+    Provincia: {{ $paciente->departamento->provincia->nombre }} <br/>
 @endif
