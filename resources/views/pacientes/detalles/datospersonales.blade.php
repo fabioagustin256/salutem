@@ -60,7 +60,20 @@ Teléfono Celular:
 @endif
 <br/>
 
-Email: {{ $paciente->email }} 
+Email: 
+@if($paciente->email)
+    {{ $paciente->email }}
+@else
+    -
+@endif
+<br/>
+
+Domicilio: 
+@if($paciente->domicilio)
+    {{ $paciente->domicilio }}
+@else
+    -
+@endif
 <br/>
 
 @if (!empty($paciente->departamento))

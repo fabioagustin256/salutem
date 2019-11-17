@@ -29,6 +29,7 @@ function cargar_paciente(Paciente $paciente, Request $request)
         $paciente->telefono_fijo = $request->telefono_fijo;
         $paciente->telefono_celular = $request->telefono_celular;
         $paciente->email = $request->email;
+        $paciente->domicilio = $request->domicilio;
         $paciente->departamento_id = $request->departamento;
         $paciente->save();
     } catch (Excepction $e) {

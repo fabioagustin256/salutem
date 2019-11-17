@@ -75,6 +75,10 @@
             <label for="email">Email</label>
             <input type="email" class="form-control" name="email" value="{{ isset($paciente)?$paciente->email:old('email') }}">
         </div>
+        <div class="form-group">
+            <label for="domicilio">Domicilio</label>
+            <input type="text" class="form-control" name="domicilio" value="{{ isset($paciente)?$paciente->domicilio:old('domicilio') }}">
+        </div>
 
         @include('formularios.elegirdepartamento')
         
