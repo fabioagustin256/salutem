@@ -10,15 +10,14 @@
             <th scope="col">Nombre</th>
             <th scope="col">Fec. nacimiento</th>
             <th scope="col">Ocupación</th>
-            <th scope="col">Localidad</th>
             <th scope="col">Departamento</th>
+            <th scope="col">Provincia</th>
             @isset($opciones) 
                 <th scope="col">Opciones</th>
             @endisset
         </tr>
     </thead>
-    <tbody>
-        {{-- Si deseo obtener un listado de pacientes --}}    
+    <tbody>   
         @if(count($pacientes))
             @foreach ($pacientes as $paciente)
                 <tr>

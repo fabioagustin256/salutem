@@ -76,7 +76,7 @@
             <input type="email" class="form-control" name="email" value="{{ isset($paciente)?$paciente->email:old('email') }}">
         </div>
 
-        @include('formularios.elegirlocalidad')
+        @include('formularios.elegirdepartamento')
         
         <div class="text-right">
             <button type="submit" class="btn btn-success">Guardar</button>
@@ -87,7 +87,7 @@
 @section('script')
     <script src="{{ url('js/calendarioes.js') }}"></script>
     <script src="{{ url('js/elegircampo.js') }}"></script>
-    <script src="{{ url('js/elegirlocalidad.js') }}"></script>
+    <script src="{{ url('js/elegirdepartamento.js') }}"></script>
 
     <script>
         $(document).ready(function(){
@@ -95,7 +95,7 @@
             elegircampo("estado_civil", "{{ route('estadosciviles.listar') }}");
             elegircampo("ocupacion", "{{ route('ocupaciones.listar') }}");
             elegircampo("obra_social", "{{ route('obrassociales.listar') }}");              
-            elegirlocalidad("{{ route('departamentos.listar') }}", "{{ route('inicio')}}" + "/localidades/localidadesdepartamento/");
+            elegirdepartamento("{{ route('provincias.listar') }}", "{{ route('inicio')}}" + "/departamentos/departamentosprovincia/");
         });
     </script>
 

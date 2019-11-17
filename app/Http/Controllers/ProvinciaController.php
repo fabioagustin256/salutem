@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Provincia;
+
 use Illuminate\Http\Request;
 
 class ProvinciaController extends Controller
 {
     public function listar(){
-        return Provincia::where('id', 7)->orwhere('id', 20)->get();
+        return Provincia::all();
     }
 }

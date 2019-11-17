@@ -15,9 +15,9 @@
         -
     @endif
 </td>
-@if (!empty($paciente->localidad))
-    <td  class="text-center">{{ $paciente->localidad->nombre }}</td>
-    <td class="text-center">{{ $paciente->localidad->departamento->nombre }}</td>
+@if (!empty($paciente->departamento))
+    <td  class="text-center">{{ $paciente->departamento->nombre }}</td>
+    <td class="text-center">{{ $paciente->departamento->provincia->nombre }}</td>
 @else
     <td class="text-center">-</td>
     <td class="text-center">-</td>

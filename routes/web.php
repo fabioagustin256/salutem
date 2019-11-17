@@ -11,11 +11,11 @@
 |
 */
 
-// Departamentos y localidades
+// Provincias Departamentos
 
-Route::get('departamentos/listar', 'DepartamentoController@listar')->name('departamentos.listar');
+Route::get('provincias/listar', 'ProvinciaController@listar')->name('provincias.listar');
 
-Route::get('localidades/localidadesdepartamento/{id}', 'LocalidadController@localidadesdepartamento')->name('localidades.localidadesdepartamento');
+Route::get('departamentos/departamentosprovincia/{provincia_id}', 'DepartamentoController@departamentosprovincia')->name('departamentos.departamentosprovincia');
 
 
 // Administracion 

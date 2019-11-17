@@ -7,9 +7,8 @@ use Illuminate\Http\Request;
 
 class DepartamentoController extends Controller
 {
-    public function listar()
+    public function departamentosprovincia($provincia_id)
     {
-        //Lista de departamentos de Entre Ríos
-        return Departamento::where('provincia_id', 7)->get();
+        return Departamento::where('provincia_id', $provincia_id)->get();
     }
 }

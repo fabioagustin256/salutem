@@ -18,7 +18,10 @@ function cargar_paciente(Paciente $paciente, Request $request)
         $paciente->dni = $request->dni;
         $paciente->apellido = $request->apellido;
         $paciente->nombre = $request->nombre;
-        $paciente->fecha_nacimiento = Carbon::createFromFormat('d/m/Y', $request->fecha_nacimiento)->format('Y-m-d');
+        if ($request->fecha_nacimiento)
+        {
+            $paciente->fecha_nacimiento = Carbon::createFromFormat('d/m/Y', $request->fecha_nacimiento)->format('Y-m-d');
+        }
         $paciente->sexo = $request->sexo;
         $paciente->estado_civil_id = $request->estado_civil;
         $paciente->ocupacion_id = $request->ocupacion;
@@ -26,7 +29,7 @@ function cargar_paciente(Paciente $paciente, Request $request)
         $paciente->telefono_fijo = $request->telefono_fijo;
         $paciente->telefono_celular = $request->telefono_celular;
         $paciente->email = $request->email;
-        $paciente->localidad_id = $request->localidad;
+        $paciente->departamento_id = $request->departamento;
         $paciente->save();
     } catch (Excepction $e) {
         return $e->getMessage();
@@ -151,18 +154,18 @@ class PacienteController extends Controller
     {   
         $correcto = true;
 
-        if ($request->localidad)
+        if ($request->departamento)
         {
-            $pacientes = Paciente::where('localidad_id', $request->localidad);
+            $pacientes = Paciente::where('departamento_id', $request->departamento);
            
         }
         else 
         {
-            if($request->departamento)
+            if($request->provincia)
             {
-                $pacientes = Paciente::select('pacientes.*')->join('localidades', 'localidades.id', '=', 'pacientes.localidad_id')
-                ->join('departamentos', 'departamentos.id', '=', 'localidades.departamento_id')
-                ->where('departamentos.id', $request->departamento);    
+                $pacientes = Paciente::select('pacientes.*')->join('departamentos', 'departamentos.id', '=', 'pacientes.departamento_id')
+                ->join('provincias', 'provincias.id', '=', 'departamentos.provincia_id')
+                ->where('provincias.id', $request->provincia);    
             }
 
         }       

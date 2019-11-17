@@ -10,7 +10,7 @@
     <form method="POST" id="filtrospacientes">
         @csrf
 
-        @include('formularios.elegirlocalidad')
+        @include('formularios.elegirdepartamento')
 
         <button type="submit" class="btn btn-success">Listar</button>
     </form> 
