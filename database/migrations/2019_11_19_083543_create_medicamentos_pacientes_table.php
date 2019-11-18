@@ -19,7 +19,7 @@ class CreateMedicamentosPacientesTable extends Migration
             $table->foreign('paciente_id')->references('id')->on('pacientes');
             $table->unsignedBigInteger('medicamento_id')->nullable();
             $table->foreign('medicamento_id')->references('id')->on('medicamentos');
-            $table->text('observacion');
+            $table->text('observacion')->nullable();
             $table->timestamps();
         });
     }

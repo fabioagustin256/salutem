@@ -1,6 +1,6 @@
 <div class="form-group row">
-    <label for="{{ $campo }}" class="col-sm-1 col-form-label"> {{ ucfirst($campo) }}</label>
-    <div class="col-sm-11">
+    <label for="{{ $campo }}" class="col-sm-2 col-form-label"> {{ ucfirst($campo) }}</label>
+    <div class="col-sm-10">
         <input type="text" class="form-control" id="{{ $campo }}" name="{{ $campo }}" 
             @isset($editar) value="{{ $editar }}"  @endisset
         >

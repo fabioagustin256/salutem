@@ -31,7 +31,9 @@
             </div>
                 <div id="medicamentosContentId" class="collapse" role="tabpanel" aria-labelledby="medicamentosHeaderId">
                     <div class="card-body">
-                        
+                        <div id=tablamedicamentospaciente>
+                            @include('historiaclinica.clase.listar', ['clase'=>'medicamento', 'objetos'=>$paciente->medicamentospaciente])
+                        </div>
                     </div>
                 </div>
             </div>
@@ -39,5 +41,18 @@
      
     </div>
 
+@endsection
 
+
+@section('script')
+    <script src="{{ url('js/autocompletar.js') }}"></script>
+    <script src="{{ url('js/agregaritem.js') }}"></script>
+    <script src="{{ url('js/quitaritem.js') }}"></script>
+
+    <script>
+        $(document).ready(function(){
+            
+            
+        });
+    </script>
 @endsection
