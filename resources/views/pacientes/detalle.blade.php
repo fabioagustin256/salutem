@@ -7,19 +7,37 @@
 
     <div id="accordianId" role="tablist" aria-multiselectable="true">
         <div class="card">
-            <div class="card-header" role="tab" id="section1HeaderId">
+            <div class="card-header" role="tab" id="datospersonalesHeaderId">
                 <h5 class="mb-0">
-                    <a data-toggle="collapse" data-parent="#accordianId" href="#section1ContentId" aria-expanded="true" aria-controls="section1ContentId">
-                    Datos del paciente
+                    <a data-toggle="collapse" data-parent="#accordianId" href="#datospersonalesContentId" aria-expanded="true" aria-controls="datospersonalesContentId">
+                        Datos del paciente
                     </a>
                 </h5>
             </div>
-                <div id="section1ContentId" class="collapse show" role="tabpanel" aria-labelledby="section1HeaderId">
+                <div id="datospersonalesContentId" class="collapse show" role="tabpanel" aria-labelledby="datospersonalesHeaderId">
                     <div class="card-body">
                         @include('pacientes.detalles.datospersonales', ['paciente' => $paciente])
                     </div>
                 </div>
             </div>
         </div>
-    </div> 
+        <div class="card">
+            <div class="card-header" role="tab" id="medicamentosHeaderId">
+                <h5 class="mb-0">
+                    <a data-toggle="collapse" data-parent="#accordianId" href="#medicamentosContentId" aria-expanded="true" aria-controls="medicamentosContentId">
+                        Medicamentos
+                    </a>
+                </h5>
+            </div>
+                <div id="medicamentosContentId" class="collapse" role="tabpanel" aria-labelledby="medicamentosHeaderId">
+                    <div class="card-body">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+     
+    </div>
+
+
 @endsection

@@ -10,15 +10,15 @@ Nombre: {{ $paciente->nombre }} <br/>
 
 Apellido: {{ $paciente->apellido }} <br/>
 
-Estado Civil: 
+Sexo: {{ $paciente->sexo }} <br/>
+
+Fecha de nacimiento: 
 @if($paciente->fecha_nacimiento)
     {{ date('d/m/Y', strtotime($paciente->fecha_nacimiento)) }}
 @else
     -
 @endif
 <br/>
-
-Sexo: {{ $paciente->sexo }} <br/>
 
 Estado civil: 
 @if($paciente->estado_civil)
