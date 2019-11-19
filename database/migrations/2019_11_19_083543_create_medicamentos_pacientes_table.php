@@ -15,6 +15,11 @@ class CreateMedicamentosPacientesTable extends Migration
     {
         Schema::create('medicamentos_pacientes', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('paciente_id')->nullable();
+            $table->foreign('paciente_id')->references('id')->on('pacientes');
+            $table->unsignedBigInteger('medicamento_id')->nullable();
+            $table->foreign('medicamento_id')->references('id')->on('medicamentos');
+            $table->text('observacion');
             $table->timestamps();
         });
     }

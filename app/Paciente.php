@@ -26,6 +26,11 @@ class Paciente extends Model
         return $this->belongsTo('App\Departamento');
     }
 
+    public function medicamentos()
+    {
+        return $this->belongsTo('App\Departamento');
+    }
+
     public function mostrar(){
         $departamento = empty($this->departamento)? "Sin datos": $this->departamento->nombre . " - " . $this->departamento->provincia->nombre;
         return number_format($this->dni, 0, ',', '.') . " - " . $this->nombre . " " . $this->apellido . " - " . $departamento;
