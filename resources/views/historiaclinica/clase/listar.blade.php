@@ -15,7 +15,7 @@
             </div>
             <div class="form-group">
                 <label for="observacion">Observación</label>
-                <textarea class="form-control" id="observacion" rows="4"></textarea>
+                <textarea class="form-control" id="observacion" rows="3"></textarea>
               </div>
             <button type="submit" class="btn btn-success">Guardar</button>
         </form> 
