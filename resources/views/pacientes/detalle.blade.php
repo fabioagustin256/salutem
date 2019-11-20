@@ -32,7 +32,9 @@
                 <div id="medicamentosContentId" class="collapse" role="tabpanel" aria-labelledby="medicamentosHeaderId">
                     <div class="card-body">
                         <div id=tablamedicamentospaciente>
-                            @include('historiaclinica.clase.listar', ['clase'=>'medicamento', 'objetos'=>$paciente->medicamentospaciente])
+                            @include('pacientes.detalles.historiaclinica.clase.listar', 
+                                ['clase'=>'medicamento', 'clasepaciente'=>'medicamentopaciente', 
+                                'pacienteid'=>$paciente->id, 'objetos'=>$paciente->medicamentospaciente])  
                         </div>
                     </div>
                 </div>
@@ -51,8 +53,8 @@
 
     <script>
         $(document).ready(function(){
-            
-            
+            autocompletar("#medicamento", "{{ route('administracion.clase.buscar',  'medicamento') }}");
+            agregaritem("#nuevo", "#formnuevo", "{{ route('medicamentospacientes.agregar')}}", "#tablamedicamento");      
         });
     </script>
 @endsection

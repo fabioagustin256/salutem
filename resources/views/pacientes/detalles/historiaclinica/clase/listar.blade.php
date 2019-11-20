@@ -1,6 +1,7 @@
- <span  id="tablaclase">
-    @include('historiaclinica.clase.tabla1', ['clase' => $clase, 'objetos' => $objetos])
+<span id="tablamedicamento">
+    @include('pacientes.detalles.historiaclinica.clase.tabla1', ['pacienteid'=> $pacienteid, 'clase' => $clase, 'clasepaciente'=>$clasepaciente, 'objetos' => $objetos])
 </span>
+
 <p>
     <a class="btn btn-success" data-toggle="collapse" href="#nuevo" role="button" aria-expanded="false" aria-controls="collapseclase">
         Agregar
@@ -15,8 +16,9 @@
             </div>
             <div class="form-group">
                 <label for="observacion">Observación</label>
-                <textarea class="form-control" id="observacion" rows="3"></textarea>
-              </div>
+                <textarea class="form-control" id="observacion" name="observacion"  rows="3"></textarea>
+            </div>
+            <input type="hidden" name="paciente" value="{{ $pacienteid }}">
             <button type="submit" class="btn btn-success">Guardar</button>
         </form> 
     </div>

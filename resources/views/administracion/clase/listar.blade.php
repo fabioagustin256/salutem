@@ -59,7 +59,7 @@
     <script src="{{ url('js/resetearfiltros.js') }}"></script>
 
     <script>
-        $(document).ready(function(){
+        $(document).ready(function(){                        
             agregaritem("#nuevo", "#formnuevo", "{{ route('inicio')}}" + "/administracion/agregar/" + "{{ $clase }}" , "#tablaclase");
             autocompletar("#buscar", "{{ route('administracion.clase.buscar',  $clase) }}");
             filtrar("{{ route('administracion.clase.filtrar', $clase) }}", "#buscarclase", "#tablaclase");  

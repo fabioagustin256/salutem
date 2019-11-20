@@ -4,53 +4,32 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+function nombre_modelo($clasepaciente)
+{
+    return 'App\\' . $clasepaciente;
+}
+
+function obtener_objetos($pacienteid, $clasepaciente)
+{
+    return nombre_modelo($clasepaciente)::where('paciente_id', $pacienteid)->get();
+}
+
 class HistoriaClinicaController extends Controller
 {
-    public function listar($clase, $plural)
+    public function quitar($pacienteid, $clasepaciente, $clase, $id)
     {
-        $objetos = obtener_objetos($clase);
-        return view('administracion.clase.listar', compact('objetos', 'clase', 'plural'));
-    }
-
-    public function agregar($clase, Request $request)
-    {
-        $modelo = nombre_modelo($clase);
-        $objeto = $modelo::where('nombre', $request->objeto)->get();
-        if(count($objeto)==0)
-        {
-            try {
-                $objeto = new $modelo();
-                $objeto->nombre = $request->objeto;
-                $objeto->save();
-                $correcto = true;
-                $mensaje = "Se agregó correctamente";
-            } catch (\Throwable $th) {
-                //throw $th;
-            }           
-        }
-        else 
-        {
-            $correcto = false;
-            $mensaje = "El registro ya se encuentra en el listado";            
-        }
-        $objetos = obtener_objetos($clase);
-        return view('administracion.clase.tabla', compact('clase', 'objetos', 'correcto', 'mensaje'));
-    }
-
-    public function quitar($clase, $id)
-    {
-        $modelo = nombre_modelo($clase);
+        $modelo = nombre_modelo($clasepaciente);
         $objeto = $modelo::findorfail($id);
         try {
             $objeto->delete();
             $correcto = true;
-            $mensaje = "El/la" . $clase . " se eliminó correctamente";
+            $mensaje = "El registro se eliminó correctamente";
         } catch (\Throwable $th) {
             $correcto = false;
-            $mensaje = "No se puede eliminar el/la" . $clase . " porque está asignado/a";
+            $mensaje = "No se puede eliminar el registro porque está asignado/a";
         }
-        $objetos = obtener_objetos($clase);        
-        return view('administracion.clase.tabla', compact('clase', 'objetos', 'correcto', 'mensaje'));
+        $objetos = obtener_objetos($pacienteid, $clasepaciente);        
+        return view('pacientes.detalles.historiaclinica.clase.tabla1', compact('clasepaciente', 'clase', 'pacienteid', 'objetos', 'correcto', 'mensaje'));
     }
 
     public function buscar($clase, Request $request)

@@ -1,3 +1,7 @@
+@isset($correcto)
+    @include('formularios.mensajes', ['mensaje' => $mensaje, 'correcto'=> $correcto])
+@endisset
+
 <table class="table table-bordered table-sm">
     <thead class="thead-dark">
         <tr class="text-center">
@@ -13,7 +17,7 @@
                     <td> {{ $objeto->medicamento->nombre }} </td>
                     <td> {{ $objeto->observacion }} </td>
                     <td>                                       
-                        <button type="button" class="btn btn-danger btn-sm" onclick="quitaritem('{{ route('administracion.clase.quitar',  array($clase, $objeto->id)) }}', '#tablaclase')">
+                        <button type="button" class="btn btn-danger btn-sm" onclick="quitaritem('{{ route('historiaclinica.clase.quitar',  array($pacienteid, $clasepaciente, $clase, $objeto->id)) }}', '#tabla{{$clase}}')">
                             Quitar
                         </button>
                     </td>
