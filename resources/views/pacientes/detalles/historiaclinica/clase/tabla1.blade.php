@@ -17,7 +17,7 @@
                     <td> {{ $objeto->medicamento->nombre }} </td>
                     <td> {{ $objeto->observacion }} </td>
                     <td>                                       
-                        <button type="button" class="btn btn-danger btn-sm" onclick="quitaritem('{{ route('historiaclinica.clase.quitar',  array($pacienteid, $clasepaciente, $clase, $objeto->id)) }}', '#tabla{{$clase}}')">
+                        <button type="button" class="btn btn-danger btn-sm" onclick="quitaritem('{{ route('historiaclinica.clase.quitar',  array($objeto->paciente->id, $clasepaciente, $clase, $objeto->id)) }}', '#tabla{{$clase}}')">
                             Quitar
                         </button>
                     </td>
