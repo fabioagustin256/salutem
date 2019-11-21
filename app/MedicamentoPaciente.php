@@ -17,4 +17,10 @@ class MedicamentoPaciente extends Model
     {
         return $this->belongsTo('App\Medicamento');
     }
+
+    public function mostrar_clase()
+    {
+        return $this->medicamento();
+    }
+
 }

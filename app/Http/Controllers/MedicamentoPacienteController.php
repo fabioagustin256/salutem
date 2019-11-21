@@ -35,10 +35,9 @@ class MedicamentoPacienteController extends Controller
             $correcto = false;
             $mensaje = "El medicamento ya se encuentra en el listado";            
         }
-        $clase = "medicamentos";
-        $clasepaciente = "medicamentopaciente";
+        $clase = "medicamento";
         $paciente = Paciente::findorfail($pacienteid);
         $objetos = $paciente->medicamentospaciente;
-        return view('pacientes.detalles.historiaclinica.clase.tabla1', compact('pacienteid', 'clase', 'clasepaciente', 'objetos', 'correcto', 'mensaje'));
+        return view('pacientes.detalles.historiaclinica.tabla1', compact('pacienteid', 'clase', 'clasepaciente', 'objetos', 'correcto', 'mensaje'));
     }
 }

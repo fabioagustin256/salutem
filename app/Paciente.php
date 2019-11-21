@@ -26,9 +26,14 @@ class Paciente extends Model
         return $this->belongsTo('App\Departamento');
     }
 
-    public function medicamentospaciente()
+    public function medicamentos_paciente()
     {
         return $this->hasMany('App\MedicamentoPaciente');
+    }
+
+    public function antecedentes_patologicos_paciente()
+    {
+        return $this->hasMany('App\AntecedentePatologicoPaciente');
     }
 
     public function mostrar(){

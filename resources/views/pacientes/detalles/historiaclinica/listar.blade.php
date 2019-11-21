@@ -1,18 +1,21 @@
-<span id="tablamedicamento">
-    @include('pacientes.detalles.historiaclinica.clase.tabla1', ['pacienteid'=> $pacienteid, 'clase' => $clase, 'clasepaciente'=>$clasepaciente, 'objetos' => $objetos])
+<span id="tabla{{$clase}}">
+    @include('pacientes.detalles.historiaclinica.tabla1', 
+        ['clase' => $clase, 'clasepaciente'=>$clasepaciente, 
+        'pacienteid'=> $pacienteid, 'objetos' => $objetos])
 </span>
 
 <p>
-    <a class="btn btn-success" data-toggle="collapse" href="#nuevo" role="button" aria-expanded="false" aria-controls="collapseclase">
+    <a class="btn btn-success" data-toggle="collapse" href="#nuevo{{ $clase}}" role="button" aria-expanded="false" aria-controls="collapseclase">
         Agregar
     </a>
-</p>        
-<div class="collapse" id="nuevo">
+</p>
+        
+<div class="collapse" id="nuevo{{ $clase}}">
     <div class="card card-body">
-        <form method="POST" id="formnuevo">
+        <form method="POST" id="formnuevo{{ $clase }}">
             @csrf
             <div class="form-group">                    
-                @include('formularios.autocompletado', ['campo'=> $clase]) 
+                @include('formularios.autocompletado', ['nombrecampo'=>$titulo,'campo'=> $clase]) 
             </div>
             <div class="form-group">
                 <label for="observacion">Observación</label>

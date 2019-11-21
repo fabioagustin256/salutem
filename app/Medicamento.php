@@ -10,4 +10,5 @@ class Medicamento extends Model
     {
         return $this->nombre;
     }
+
 }

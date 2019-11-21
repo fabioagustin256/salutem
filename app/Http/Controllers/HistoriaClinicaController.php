@@ -29,7 +29,7 @@ class HistoriaClinicaController extends Controller
             $mensaje = "No se puede eliminar el registro porque está asignado/a";
         }
         $objetos = obtener_objetos($pacienteid, $clasepaciente);        
-        return view('pacientes.detalles.historiaclinica.clase.tabla1', compact('clasepaciente', 'clase', 'pacienteid', 'objetos', 'correcto', 'mensaje'));
+        return view('pacientes.detalles.historiaclinica.tabla1', compact('clasepaciente', 'clase', 'pacienteid', 'objetos', 'correcto', 'mensaje'));
     }
 
     public function buscar($clase, Request $request)

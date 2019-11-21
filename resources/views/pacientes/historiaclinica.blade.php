@@ -4,6 +4,9 @@
     <a class="btn btn-primary float-right" href="{{ route('pacientes.index') }}" role="button">Volver al listado</a>
 
     <br><br>
+    <h3 class="text-center">Historia Clínica</h3>
+
+    <br>
 
     <div id="accordianId" role="tablist" aria-multiselectable="true">
         <div class="card">
@@ -14,10 +17,9 @@
                     </a>
                 </h5>
             </div>
-                <div id="datospersonalesContentId" class="collapse show" role="tabpanel" aria-labelledby="datospersonalesHeaderId">
-                    <div class="card-body">
-                        @include('pacientes.detalles.datospersonales', ['paciente' => $paciente])
-                    </div>
+            <div id="datospersonalesContentId" class="collapse" role="tabpanel" aria-labelledby="datospersonalesHeaderId">
+                <div class="card-body">
+                    @include('pacientes.detalles.datospersonales', ['paciente' => $paciente])
                 </div>
             </div>
         </div>
@@ -29,19 +31,22 @@
                     </a>
                 </h5>
             </div>
-                <div id="medicamentosContentId" class="collapse" role="tabpanel" aria-labelledby="medicamentosHeaderId">
-                    <div class="card-body">
-                        <div id=tablamedicamentospaciente>
-                            @include('pacientes.detalles.historiaclinica.clase.listar', 
-                                ['clase'=>'medicamento', 'clasepaciente'=>'medicamentopaciente', 
-                                'pacienteid'=>$paciente->id, 'objetos'=>$paciente->medicamentospaciente])  
-                        </div>
+            <div id="medicamentosContentId" class="collapse" role="tabpanel" aria-labelledby="medicamentosHeaderId">
+                <div class="card-body">
+                    <div id=tablamedicamentospaciente>
+                        @include('pacientes.detalles.historiaclinica.listar', 
+                            ['clase'=>'medicamento', 'clasepaciente'=>'medicamentopaciente',
+                            'pacienteid'=>$paciente->id, 'objetos'=>$paciente->medicamentos_paciente])  
                     </div>
                 </div>
             </div>
         </div>
-     
+        @include('pacientes.detalles.historiaclinica.seccion',
+            [ 'titulo' => 'Antecedentes patológicos',
+            'clase'=>'antecedentepatologico', 'clasepaciente'=>'antecedentepatologicopaciente',
+            'pacienteid'=>$paciente->id, 'objetos'=>$paciente->antecedentes_patologicos_paciente])
     </div>
+        
 
 @endsection
 
@@ -53,8 +58,8 @@
 
     <script>
         $(document).ready(function(){
-            autocompletar("#medicamento", "{{ route('administracion.clase.buscar',  'medicamento') }}");
-            agregaritem("#nuevo", "#formnuevo", "{{ route('medicamentospacientes.agregar')}}", "#tablamedicamento");      
+            autocompletar("#medicamento", "{{ route('administracion.clase.buscar', 'medicamento') }}");
+            agregaritem("#nuevomedicamento", "#formnuevomedicamento", "{{ route('medicamentospacientes.agregar')}}", "#tablamedicamento");      
         });
     </script>
 @endsection

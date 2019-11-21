@@ -63,9 +63,13 @@ Route::get('obrassociales/listar', 'ObraSocialController@listar')->name('obrasso
 
 // Historia Clinica 
 
-Route::get('historiaclinica/{pacienteid}/{clasepaciente}/quitar/{clase}/{id}/', 'HistoriaClinicaController@quitar')->name('historiaclinica.clase.quitar');
-
 Route::get('historiaclinica/{clase}/buscar', 'HistoriaClinicaController@buscar')->name('historiaclinica.clase.buscar');
+
+Route::get('historiaclinica/{pacienteid}/{clasepaciente}/quitar/{clase}/{id}/', 'HistoriaClinicaController@quitar')->name('historiaclinica.clase.quitar');
 
 
 Route::post('medicamentospacientes/agregar', 'MedicamentoPacienteController@agregar')->name('medicamentospacientes.agregar');
+
+
+Route::post('antecedentespatologicospacientes/agregar', 'AntecedentePatogolicoPacienteController@agregar')->name('antecedentespatologicospacientes.agregar');
+
