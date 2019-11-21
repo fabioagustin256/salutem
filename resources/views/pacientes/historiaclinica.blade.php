@@ -35,7 +35,8 @@
                 <div class="card-body">
                     <div id=tablamedicamentospaciente>
                         @include('pacientes.detalles.historiaclinica.listar', 
-                            ['clase'=>'medicamento', 'clasepaciente'=>'medicamentopaciente',
+                            ['titulo' => 'Medicamentos',
+                                'clase'=>'medicamento', 'clasepaciente'=>'medicamentopaciente',
                             'pacienteid'=>$paciente->id, 'objetos'=>$paciente->medicamentos_paciente])  
                     </div>
                 </div>

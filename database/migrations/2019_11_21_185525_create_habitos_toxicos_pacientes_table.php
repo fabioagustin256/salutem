@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAntecedentesPatologicosPacientesTable extends Migration
+class CreateHabitosToxicosPacientesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateAntecedentesPatologicosPacientesTable extends Migration
      */
     public function up()
     {
-        Schema::create('antecedentes_patologicos_pacientes', function (Blueprint $table) {
+        Schema::create('habitos_toxicos_pacientes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('paciente_id')->nullable();
             $table->foreign('paciente_id')->references('id')->on('pacientes');
-            $table->unsignedBigInteger('ant_patologico_id')->nullable();
-            $table->foreign('ant_patologico_id')->references('id')->on('antecedentes_patologicos');
+            $table->unsignedBigInteger('habito_toxico_id')->nullable();
+            $table->foreign('habito_toxico_id')->references('id')->on('habitos_toxicos');
             $table->text('observacion')->nullable();
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ class CreateAntecedentesPatologicosPacientesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('antecedentes_patologicos_pacientes');
+        Schema::dropIfExists('habitos_toxicos_pacientes');
     }
 }

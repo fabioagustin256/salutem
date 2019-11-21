@@ -14,14 +14,14 @@ class AntecedentePatologicoPacienteController extends Controller
         $pacienteid = $request->paciente;
         $antecedentepatologicoid = $request->antecedentepatologicoid;
 
-        $antecedente_patologico_paciente = AntecedentePatologicoPaciente::where('paciente_id', $pacienteid)->where('antecedente_patologico_id', $medicamentoid)->get();
+        $antecedente_patologico_paciente = AntecedentePatologicoPaciente::where('paciente_id', $pacienteid)->where('ant_patologico_id', $medicamentoid)->get();
 
         if(count($medicamentopaciente)==0)
         {
             try {
                 $antecedente_patologico_paciente = new AntecedentePatologicoPaciente();
                 $antecedente_patologico_paciente->paciente_id = $pacienteid;
-                $antecedente_patologico_paciente->medicamento_id = $antecedentepatologicoid;
+                $antecedente_patologico_paciente->ant_patologico_id = $antecedentepatologicoid;
                 $antecedente_patologico_paciente->observacion = $request->observacion;
                 $antecedente_patologico_paciente->save();
                 $correcto = true;
