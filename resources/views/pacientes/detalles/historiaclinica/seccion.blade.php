@@ -9,8 +9,9 @@
     <div id="{{ $clase }}ContentId" class="collapse" role="tabpanel" aria-labelledby="{{ $clase }}HeaderId">
         <div class="card-body">
             <div id="tabla{{ $clase }}paciente">
-                @include('pacientes.detalles.historiaclinica.listar', 
-                    ['titulo'=>$titulo, 'clase'=>$clase, 'clasepaciente'=>$clasepaciente, 
+                @include('pacientes.detalles.historiaclinica.listar1', 
+                    ['titulo'=>$titulo, 'nombrecampo'=>$nombrecampo,
+                    'clase'=>$clase, 'clasepaciente'=>$clasepaciente, 
                     'pacienteid'=>$pacienteid, 'objetos'=>$objetos])  
             </div>
         </div>

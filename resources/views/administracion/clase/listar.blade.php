@@ -10,7 +10,7 @@
             <form method="POST" id="buscarclase">
                 @csrf
 
-                @include('formularios.autocompletado', ['campo'=> 'buscar'])           
+                @include('formularios.autocompletado', ['nombrecampo'=>'Buscar', 'campo'=> 'buscar'])           
         </div>
         <div class="col-sm-1 text-left">
                 <button type="submit" class="btn btn-success">Filtrar</button>

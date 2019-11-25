@@ -34,8 +34,8 @@
             <div id="medicamentosContentId" class="collapse" role="tabpanel" aria-labelledby="medicamentosHeaderId">
                 <div class="card-body">
                     <div id=tablamedicamentospaciente>
-                        @include('pacientes.detalles.historiaclinica.listar', 
-                            ['titulo' => 'Medicamentos',
+                        @include('pacientes.detalles.historiaclinica.listar1', 
+                            ['titulo' => 'Medicamentos', 'nombrecampo'=>'Medicamento',
                                 'clase'=>'medicamento', 'clasepaciente'=>'medicamentopaciente',
                             'pacienteid'=>$paciente->id, 'objetos'=>$paciente->medicamentos_paciente])  
                     </div>
@@ -43,7 +43,7 @@
             </div>
         </div>
         @include('pacientes.detalles.historiaclinica.seccion',
-            [ 'titulo' => 'Antecedentes patológicos',
+            [ 'titulo' => 'Antecedentes patológicos', 'nombrecampo'=>'Antecedente patológico',
             'clase'=>'antecedentepatologico', 'clasepaciente'=>'antecedentepatologicopaciente',
             'pacienteid'=>$paciente->id, 'objetos'=>$paciente->antecedentes_patologicos_paciente])
     </div>
@@ -60,7 +60,7 @@
     <script>
         $(document).ready(function(){
             autocompletar("#medicamento", "{{ route('administracion.clase.buscar', 'medicamento') }}");
-            agregaritem("#nuevomedicamento", "#formnuevomedicamento", "{{ route('medicamentospacientes.agregar')}}", "#tablamedicamento");      
+            agregaritem("#nuevomedicamento", "#formnuevomedicamento", "{{ route('historiaclinica.clase.agregar', 'medicamento')}}", "#tablamedicamento");      
         });
     </script>
 @endsection

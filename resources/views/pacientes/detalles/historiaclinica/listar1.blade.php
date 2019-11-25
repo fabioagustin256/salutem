@@ -46,7 +46,7 @@
         <form method="POST" id="formnuevo{{ $clase }}">
             @csrf
             <div class="form-group">                    
-                @include('formularios.autocompletado', ['nombrecampo'=>$titulo,'campo'=> $clase]) 
+                @include('formularios.autocompletado', ['nombrecampo'=>$nombrecampo,'campo'=> $clase]) 
             </div>
             <div class="form-group">
                 <label for="observacion">Observación</label>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Paciente;
+
 use Illuminate\Http\Request;
 
 function nombre_modelo($clasepaciente)
@@ -16,6 +18,37 @@ function obtener_objetos($pacienteid, $clasepaciente)
 
 class HistoriaClinicaController extends Controller
 {
+    public function agregar($clase, Request $request)
+    {
+        $clasepaciente = $clase . 'paciente';              
+        $pacienteid = $request->paciente;
+        $paciente = Paciente::findorfail($pacienteid);
+    
+        try {
+            $modelo = nombre_modelo($clasepaciente);
+            $clasepaciente = new $modelo();
+            $clasepaciente->paciente_id = $pacienteid;
+
+            switch ($clase) {
+                case 'medicamento':
+                    $clasepaciente->medicamento_id = $request->medicamentoid;
+                    $objetos = $paciente->medicamentos_paciente;
+                    $titulo = 'Medicamentos';
+                    $nombrecampo = 'Medicamento';
+                    break;
+            }
+            $clasepaciente->observacion = $request->observacion;
+            $clasepaciente->save();
+            $correcto = true;
+            $mensaje = "Se agregó correctamente";
+        } catch (Excepction $e) {
+            return $e->getMessage();
+        }
+        
+        return view('pacientes.detalles.historiaclinica.listar1', compact('pacienteid', 'titulo', 'nombrecampo', 'clase', 'clasepaciente', 'objetos', 'correcto', 'mensaje'));
+    }
+
+
     public function quitar($pacienteid, $clasepaciente, $clase, $id)
     {
         $modelo = nombre_modelo($clasepaciente);
