@@ -30,7 +30,7 @@ function cargar_paciente(Paciente $paciente, Request $request)
         $paciente->telefono_celular = $request->telefono_celular;
         $paciente->email = $request->email;
         $paciente->domicilio = $request->domicilio;
-        $paciente->departamento_id = $request->departamento;
+        $paciente->ciudad_id = $request->ciudad;
         $paciente->save();
     } catch (Excepction $e) {
         return $e->getMessage();
@@ -155,17 +155,17 @@ class PacienteController extends Controller
     {   
         $correcto = true;
 
-        if ($request->departamento)
+        if ($request->ciudad)
         {
-            $pacientes = Paciente::where('departamento_id', $request->departamento);
+            $pacientes = Paciente::where('ciudad_id', $request->ciudad);
            
         }
         else 
         {
             if($request->provincia)
             {
-                $pacientes = Paciente::select('pacientes.*')->join('departamentos', 'departamentos.id', '=', 'pacientes.departamento_id')
-                ->join('provincias', 'provincias.id', '=', 'departamentos.provincia_id')
+                $pacientes = Paciente::select('pacientes.*')->join('ciudades', 'ciudades.id', '=', 'pacientes.ciudad_id')
+                ->join('provincias', 'provincias.id', '=', 'ciudades.provincia_id')
                 ->where('provincias.id', $request->provincia);    
             }
 

@@ -5,9 +5,9 @@
         </select>
     </div>    
 
-    <label for="departamento" class="col-sm-1 col-form-label">Departamento</label>
+    <label for="ciudad" class="col-sm-1 col-form-label">Ciudad</label>
     <div class="form-group col-sm-5">
-        <select name="departamento" class="form-control" id="dpto">
+        <select name="ciudad" class="form-control" id="ciudad">
             <option value="">Seleccione primero una provincia</option>            
         </select>
     </div>

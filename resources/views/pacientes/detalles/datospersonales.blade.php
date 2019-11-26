@@ -76,7 +76,7 @@ Domicilio:
 @endif
 <br/>
 
-@if (!empty($paciente->departamento))
-    Departamento: {{ $paciente->departamento->nombre }} <br/>
-    Provincia: {{ $paciente->departamento->provincia->nombre }} <br/>
+@if (!empty($paciente->ciudad))
+    Ciudad: {{ $paciente->ciudad->nombre }} <br/>
+    Provincia: {{ $paciente->ciudad->provincia->nombre }} <br/>
 @endif

@@ -1,4 +1,4 @@
-function elegirdepartamento(ruta, ruta2, campo){
+function elegirciudad(ruta, ruta2, campo){
     $.ajax({
         url: ruta,
         type: "GET",
@@ -23,18 +23,18 @@ function elegirdepartamento(ruta, ruta2, campo){
                 type: "GET",
                 dataType: "json",
                 success: function(data){
-                    var texto2 = '<option value="">Seleccione un departamento</option>';                    
+                    var texto2 = '<option value="">Seleccione una ciudad</option>';                    
                     for(var i=0; i<data.length;i++){
                         texto2 += '<option value="' + data[i].id + '">' + data[i].nombre + '</option>';                            
                     }
-                    $('#dpto').html(texto2);
+                    $('#ciudad').html(texto2);
                 },
                 error: function(data){
                     console.log(data);
                 }                
             });
         } else {
-            $('#dpto').html('<option value="">Seleccione primero un departamento</option>');
+            $('#ciudad').html('<option value="">Seleccione primero una provincia</option>');
         }       
     });
 };

@@ -21,13 +21,13 @@ class Paciente extends Model
         return $this->belongsTo('App\ObraSocial');
     }
 
-    public function departamento()
+    public function ciudad()
     {
-        return $this->belongsTo('App\Departamento');
+        return $this->belongsTo('App\Ciudad');
     }
 
     public function mostrar(){
-        $departamento = empty($this->departamento)? "Sin datos": $this->departamento->nombre . " - " . $this->departamento->provincia->nombre;
+        $departamento = empty($this->ciudad)? "Sin datos": $this->ciudad->nombre . " - " . $this->ciudad->provincia->nombre;
         return number_format($this->dni, 0, ',', '.') . " - " . $this->nombre . " " . $this->apellido . " - " . $departamento;
     }
 }

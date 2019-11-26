@@ -11,11 +11,11 @@
 |
 */
 
-// Provincias Departamentos
+// Provincias, Ciudades
 
 Route::get('provincias/listar', 'ProvinciaController@listar')->name('provincias.listar');
 
-Route::get('departamentos/departamentosprovincia/{provincia_id}', 'DepartamentoController@departamentosprovincia')->name('departamentos.departamentosprovincia');
+Route::get('ciudades/ciudadesprovincia/{provincia_id}', 'CiudadController@ciudadesprovincia')->name('ciudades.ciudadesprovincia');
 
 
 // Administracion 

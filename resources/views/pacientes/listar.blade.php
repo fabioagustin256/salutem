@@ -60,7 +60,7 @@
 @endsection
 
 @section('script')
-    <script src="{{ url('js/elegirdepartamento.js') }}"></script>
+    <script src="{{ url('js/elegirciudad.js') }}"></script>
     <script src="{{ url('js/filtrar.js') }}"></script>
     <script src="{{ url('js/resetearfiltros.js') }}"></script>
     <script src="{{ url('js/autocompletar.js') }}"></script>
@@ -68,7 +68,7 @@
 
     <script>
         $(document).ready(function(){
-            elegirdepartamento("{{ route('provincias.listar') }}", "{{ route('inicio')}}" + "/departamentos/departamentosprovincia/");
+            elegirciudad("{{ route('provincias.listar') }}", "{{ route('inicio')}}" + "/ciudades/ciudadesprovincia/");
             filtrar("{{ route('filtrarpacientes') }}", "#filtrospacientes", "#tablapacientes");
             autocompletar("#buscar", "{{ route('buscarpaciente') }}");
             filtrar("{{ route('filtrarpacientes') }}", "#buscarpaciente", "#tablapacientes");  

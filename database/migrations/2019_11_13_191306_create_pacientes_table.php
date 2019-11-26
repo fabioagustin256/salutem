@@ -30,8 +30,8 @@ class CreatePacientesTable extends Migration
             $table->string('telefono_celular', 50)->nullable();
             $table->string('email', 50)->nullable();
             $table->string('domicilio', 50)->nullable();
-            $table->unsignedBigInteger('departamento_id')->nullable();
-            $table->foreign('departamento_id')->references('id')->on('departamentos');
+            $table->unsignedBigInteger('ciudad_id')->nullable();
+            $table->foreign('ciudad_id')->references('id')->on('ciudades');
             $table->boolean('estado')->nullable()->default(true);  
             $table->timestamps();
         });

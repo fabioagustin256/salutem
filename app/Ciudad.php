@@ -4,8 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Departamento extends Model
+class Ciudad extends Model
 {
+    protected $table = 'ciudades';
+
     public function provincia()
     {
         return $this->belongsTo('App\Provincia');
