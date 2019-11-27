@@ -17,9 +17,22 @@ class AntecedentePatologicoPaciente extends Model
     {
         return $this->belongsTo('App\AntecedentePatologico');
     }
-
+   
     public function mostrar_clase()
     {
         return $this->antecedente_patologico();
+    }
+
+    public function cargar_clasepaciente($claseid, $pacienteid, $observacion)
+    {
+        try {
+            $this->ant_patologico_id = $claseid; 
+            $this->paciente_id = $pacienteid;
+            $this->observacion = $observacion;
+            $this->save();
+            return "Se agregó el antecedente patológico correctamente";
+        } catch (Excepction $e) {
+            return $e->getMessage();
+        }
     }
 }

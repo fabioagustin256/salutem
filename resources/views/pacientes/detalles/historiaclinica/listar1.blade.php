@@ -52,7 +52,6 @@
                 <label for="observacion">Observación</label>
                 <textarea class="form-control" id="observacion" name="observacion"  rows="3"></textarea>
             </div>
-            <input type="hidden" name="paciente" value="{{ $pacienteid }}">
             <button type="submit" class="btn btn-success">Guardar</button>
         </form> 
     </div>

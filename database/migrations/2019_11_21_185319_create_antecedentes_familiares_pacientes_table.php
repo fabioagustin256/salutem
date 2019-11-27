@@ -13,7 +13,7 @@ class CreateAntecedentesFamiliaresPacientesTable extends Migration
      */
     public function up()
     {
-        Schema::create('antecedentes_famiiares_pacientes', function (Blueprint $table) {
+        Schema::create('antecedentes_familiares_pacientes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('paciente_id')->nullable();
             $table->foreign('paciente_id')->references('id')->on('pacientes');

@@ -10,7 +10,7 @@
         <div class="card-body">
             <div id="tabla{{ $clase }}paciente">
                 @include('pacientes.detalles.historiaclinica.listar1', 
-                    ['titulo'=>$titulo, 'nombrecampo'=>$nombrecampo,
+                    ['nombrecampo'=>$nombrecampo,
                     'clase'=>$clase, 'clasepaciente'=>$clasepaciente, 
                     'pacienteid'=>$pacienteid, 'objetos'=>$objetos])  
             </div>

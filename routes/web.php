@@ -63,7 +63,7 @@ Route::get('obrassociales/listar', 'ObraSocialController@listar')->name('obrasso
 
 // Historia Clinica 
 
-Route::post('historiaclinica/{clase}/agregar', 'HistoriaClinicaController@agregar')->name('historiaclinica.clase.agregar');
+Route::post('historiaclinica/{pacienteid}/agregar/{clase}', 'HistoriaClinicaController@agregar')->name('historiaclinica.clase.agregar');
 
 Route::get('historiaclinica/{clase}/buscar', 'HistoriaClinicaController@buscar')->name('historiaclinica.clase.buscar');
 

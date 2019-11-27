@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-        @include('pacientes.detalles.historiaclinica.seccion',
+        @include('pacientes.detalles.historiaclinica.seccion1',
             [ 'titulo' => 'Antecedentes patológicos', 'nombrecampo'=>'Antecedente patológico',
             'clase'=>'antecedentepatologico', 'clasepaciente'=>'antecedentepatologicopaciente',
             'pacienteid'=>$paciente->id, 'objetos'=>$paciente->antecedentes_patologicos_paciente])
@@ -60,7 +60,10 @@
     <script>
         $(document).ready(function(){
             autocompletar("#medicamento", "{{ route('administracion.clase.buscar', 'medicamento') }}");
-            agregaritem("#nuevomedicamento", "#formnuevomedicamento", "{{ route('historiaclinica.clase.agregar', 'medicamento')}}", "#tablamedicamento");      
+            agregaritem("#nuevomedicamento", "#formnuevomedicamento", "{{ route('historiaclinica.clase.agregar', array($paciente->id, 'medicamento') )}}", "#tablamedicamento");      
+        
+            autocompletar("#antecedentepatologico", "{{ route('administracion.clase.buscar', 'antecedentepatologico') }}");
+            agregaritem("#nuevoantecedentepatologico", "#formnuevoantecedentepatologico", "{{ route('historiaclinica.clase.agregar', array($paciente->id, 'antecedentepatologico') )}}", "#tablaantecedentepatologico"); 
         });
     </script>
 @endsection
