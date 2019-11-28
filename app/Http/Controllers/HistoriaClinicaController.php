@@ -75,4 +75,25 @@ class HistoriaClinicaController extends Controller
         }
         return $resultado;
     }
+
+    public function filtrar($clase, Request $request)
+    {
+        $objeto = "objetoclase";
+
+        if ($request->buscarid)
+        {
+            $claseid = $request->buscarid;
+            $modelo = nombre_modelo($clase);
+            $objetoclase = $modelo::findorfail($claseid);
+            $mensaje1 = "Se agregó correctamente";
+            $correcto1 = true;
+        }
+        else 
+        {
+            $mensaje = 'Debe elegir un(a) ' . $clase;
+            $correcto1 = false;    
+        }
+
+        return view('pacientes.detalles.historiaclinica.agregaritem', compact('clase', 'objetoclase', 'mensaje1', 'correcto1'));
+    }
 }

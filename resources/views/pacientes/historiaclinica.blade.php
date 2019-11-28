@@ -56,12 +56,14 @@
     <script src="{{ url('js/autocompletar.js') }}"></script>
     <script src="{{ url('js/agregaritem.js') }}"></script>
     <script src="{{ url('js/quitaritem.js') }}"></script>
+    <script src="{{ url('js/filtrar.js') }}"></script>
 
     <script>
         $(document).ready(function(){
             autocompletar("#medicamento", "{{ route('administracion.clase.buscar', 'medicamento') }}");
+            filtrar("{{ route('historiaclinica.clase.filtrar', 'medicamento') }}", "#buscarmedicamento", "#formulariomedicamento");
             agregaritem("#nuevomedicamento", "#formnuevomedicamento", "{{ route('historiaclinica.clase.agregar', array($paciente->id, 'medicamento') )}}", "#tablamedicamento");      
-        
+            
             autocompletar("#antecedentepatologico", "{{ route('administracion.clase.buscar', 'antecedentepatologico') }}");
             agregaritem("#nuevoantecedentepatologico", "#formnuevoantecedentepatologico", "{{ route('historiaclinica.clase.agregar', array($paciente->id, 'antecedentepatologico') )}}", "#tablaantecedentepatologico"); 
         });

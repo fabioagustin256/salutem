@@ -67,6 +67,8 @@ Route::post('historiaclinica/{pacienteid}/agregar/{clase}', 'HistoriaClinicaCont
 
 Route::get('historiaclinica/{clase}/buscar', 'HistoriaClinicaController@buscar')->name('historiaclinica.clase.buscar');
 
+Route::post('historiaclinica/{clase}/filtrar', 'HistoriaClinicaController@filtrar')->name('historiaclinica.clase.filtrar');
+
 Route::get('historiaclinica/{pacienteid}/{clasepaciente}/quitar/{clase}/{id}/', 'HistoriaClinicaController@quitar')->name('historiaclinica.clase.quitar');
 
 

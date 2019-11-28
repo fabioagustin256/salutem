@@ -43,17 +43,26 @@
         
 <div class="collapse" id="nuevo{{ $clase}}">
     <div class="card card-body">
+        <div class="row">
+            <div class="col-sm-8">
+                <form method="POST" id="buscar{{ $clase}}">
+                    @csrf
+
+                    @include('formularios.autocompletado', ['nombrecampo'=>$nombrecampo, 'campo'=>$clase])           
+            </div>
+            <div class="col-sm-4">
+                    <button type="submit" class="btn btn-success">Elegir</button>
+                </form>
+            </div>
+        </div>
         <form method="POST" id="formnuevo{{ $clase }}">
             @csrf
-            <div class="form-group">                    
-                @include('formularios.autocompletado', ['nombrecampo'=>$nombrecampo,'campo'=> $clase]) 
+            <div id="formulario{{$clase}}">
+                @isset($correcto)
+                    @include('formularios.mensajes', ['mensaje1' => $mensaje1, 'correcto1'=> $correcto1])
+                @endisset
             </div>
-            <div class="form-group">
-                <label for="observacion">Observación</label>
-                <textarea class="form-control" id="observacion" name="observacion"  rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn btn-success">Guardar</button>
-        </form> 
+        </form>
     </div>
 </div> 
 
