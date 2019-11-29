@@ -17,6 +17,10 @@ function obtener_objetos($clase)
         case 'alergia':
             $objetos = $paciente->medicamentos_paciente;
             break;
+        case 'antecedentepatologico':
+            $objetos = $paciente->medicamentos_paciente;
+            break;
+        
         case 'medicamento':
             $objetos = $paciente->medicamentos_paciente;
             break;

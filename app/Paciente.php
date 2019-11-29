@@ -25,10 +25,22 @@ class Paciente extends Model
     {
         return $this->belongsTo('App\Departamento');
     }
+    
+    public function mostrar(){
+        $departamento = empty($this->departamento)? "Sin datos": $this->departamento->nombre . " - " . $this->departamento->provincia->nombre;
+        return number_format($this->dni, 0, ',', '.') . " - " . $this->nombre . " " . $this->apellido . " - " . $departamento;
+    }
+
+    // Campos de historia clínica
 
     public function alergias_paciente()
     {
         return $this->hasMany('App\AlergiaPaciente');
+    }
+
+    public function antecedentes_familiares_paciente()
+    {
+        return $this->hasMany('App\AntecedenteFamiliarPaciente');
     }
 
     public function antecedentes_patologicos_paciente()
@@ -36,13 +48,20 @@ class Paciente extends Model
         return $this->hasMany('App\AntecedentePatologicoPaciente');
     }
 
+    public function antecedentes_quirurgicos_paciente()
+    {
+        return $this->hasMany('App\AntecedenteQuirurgicoPaciente');
+    }
+
+    public function habitos_toxicos_paciente()
+    {
+        return $this->hasMany('App\HabitoToxico');
+    }
+
     public function medicamentos_paciente()
     {
         return $this->hasMany('App\MedicamentoPaciente');
     }
 
-    public function mostrar(){
-        $departamento = empty($this->departamento)? "Sin datos": $this->departamento->nombre . " - " . $this->departamento->provincia->nombre;
-        return number_format($this->dni, 0, ',', '.') . " - " . $this->nombre . " " . $this->apellido . " - " . $departamento;
-    }
+
 }
