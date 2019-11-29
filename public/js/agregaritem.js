@@ -6,9 +6,9 @@ function agregaritem(nuevoitem, formulario, ruta, tabla){
             type: "POST",
             data: $(this).serialize(),
             success: function(data){
-                $(tabla).html(data);
-                $(nuevoitem).reload();
+                $(tabla).html(data);                
                 $(nuevoitem).collapse('toggle');
+                $(formulario)[0].reset();
 
             },
             error: function(data){

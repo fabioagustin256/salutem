@@ -13,14 +13,14 @@ class HabitoToxicoPaciente extends Model
         return $this->belongsTo('App\Paciente');
     }
 
-    public function habitos_toxicos()
+    public function habito_toxico()
     {
         return $this->belongsTo('App\HabitoToxico');
     }
 
     public function mostrar_clase()
     {
-        return $this->habitos_toxicos();
+        return $this->habito_toxico();
     }
 
     public function cargar_clasepaciente($claseid, $pacienteid, $observacion)

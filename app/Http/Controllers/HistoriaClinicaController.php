@@ -11,24 +11,30 @@ function nombre_modelo($clasepaciente)
     return 'App\\' . $clasepaciente;
 }
 
-function obtener_objetos($clase)
+function obtener_objetos($clase, $paciente)
 {
     switch ($clase) {
         case 'alergia':
-            $objetos = $paciente->medicamentos_paciente;
+            $objetos = $paciente->alergias_paciente;
+            break;
+        case 'antecedentefamiliar':
+            $objetos = $paciente->antecedentes_familiares_paciente;
             break;
         case 'antecedentepatologico':
-            $objetos = $paciente->medicamentos_paciente;
+            $objetos = $paciente->antecedentes_patologicos_paciente;
             break;
-        
+        case 'antecedentequirurgico':
+            $objetos = $paciente->antecedentes_quirurgicos_paciente;
+            break;
+        case 'habitotoxico':
+            $objetos = $paciente->habitos_toxicos_paciente;
+            break;
         case 'medicamento':
             $objetos = $paciente->medicamentos_paciente;
             break;
     }
     return $objetos;
 }
-
-
 
 
 class HistoriaClinicaController extends Controller
@@ -44,13 +50,10 @@ class HistoriaClinicaController extends Controller
         $mensaje = $clasepaciente->cargar_clasepaciente($claseid, $pacienteid, $observacion);
         $paciente = Paciente::findorfail($pacienteid);
 
-        $objetos = obtener_objetos($clase);
-
-        $correcto = true;  
-        
+        $objetos = obtener_objetos($clase, $paciente);
+        $correcto = true;          
         return view('pacientes.detalles.historiaclinica.tabla1', compact('pacienteid', 'clase', 'clasepaciente', 'objetos', 'correcto', 'mensaje'));
     }
-
 
     public function quitar($pacienteid, $clasepaciente, $clase, $id)
     {
@@ -65,11 +68,7 @@ class HistoriaClinicaController extends Controller
             $mensaje = "No se puede eliminar el registro porque está asignado/a";
         }
         $paciente = Paciente::findorfail($pacienteid);
-        switch ($clase) {
-            case 'medicamento':
-                $objetos = $paciente->medicamentos_paciente;
-                break;
-        }     
+        $objetos = obtener_objetos($clase, $paciente);
         return view('pacientes.detalles.historiaclinica.tabla1', compact('pacienteid', 'clase', 'clasepaciente', 'objetos', 'correcto', 'mensaje'));
     }
 

@@ -39,8 +39,8 @@
                                                 <li><a class="dropdown-item" href="{{ route('administracion.clase.listar', array('clase'=>'alergia', 'plural'=>'alergias')) }}"> Alergia </a></li>
                                                 <li><a class="dropdown-item" href="{{ route('administracion.clase.listar', array('clase'=>'antecedentefamiliar', 'plural'=>'antecedentes familiares')) }}"> Antecedentes familiares</a></li>
                                                 <li><a class="dropdown-item" href="{{ route('administracion.clase.listar', array('clase'=>'antecedentepatologico', 'plural'=>'antecedentes patologicos')) }}"> Antecedentes patológicos </a></li>
-                                                <li><a class="dropdown-item" href="{{ route('administracion.clase.listar', array('clase'=>'antecedentequirurgico', 'plural'=>'antecedentes quirurgicos')) }}"> Antecedentes quirurgicos </a></li>
-                                                <li><a class="dropdown-item" href="{{ route('administracion.clase.listar', array('clase'=>'habitotoxico', 'plural'=>'habitos toxicos')) }}"> Hábitos tóxicos </a></li>
+                                                <li><a class="dropdown-item" href="{{ route('administracion.clase.listar', array('clase'=>'antecedentequirurgico', 'plural'=>'antecedentes quirúrgicos')) }}"> Antecedentes quirúrgicos </a></li>
+                                                <li><a class="dropdown-item" href="{{ route('administracion.clase.listar', array('clase'=>'habitotoxico', 'plural'=>'hábitos tóxicos')) }}"> Hábitos tóxicos </a></li>
                                                 <li><a class="dropdown-item" href="{{ route('administracion.clase.listar', array('clase'=>'medicamento', 'plural'=>'medicamentos')) }}"> Medicamentos </a></li>
                                         </ul>
                                     </li>

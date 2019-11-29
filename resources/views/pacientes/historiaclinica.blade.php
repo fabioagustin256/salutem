@@ -23,38 +23,37 @@
                 </div>
             </div>
         </div>
+
         @include('pacientes.detalles.historiaclinica.seccion1',
         [ 'titulo' => 'Alergias', 'nombrecampo'=>'Alergia',
         'clase'=>'alergia', 'clasepaciente'=>'alergiapaciente',
         'pacienteid'=>$paciente->id, 'objetos'=>$paciente->alergias_paciente])
 
-
-
-
-
-        <div class="card">
-            <div class="card-header" role="tab" id="medicamentosHeaderId">
-                <h5 class="mb-0">
-                    <a data-toggle="collapse" data-parent="#accordianId" href="#medicamentosContentId" aria-expanded="true" aria-controls="medicamentosContentId">
-                        Medicamentos
-                    </a>
-                </h5>
-            </div>
-            <div id="medicamentosContentId" class="collapse" role="tabpanel" aria-labelledby="medicamentosHeaderId">
-                <div class="card-body">
-                    <div id=tablamedicamentospaciente>
-                        @include('pacientes.detalles.historiaclinica.listar1', 
-                            ['titulo' => 'Medicamentos', 'nombrecampo'=>'Medicamento',
-                                'clase'=>'medicamento', 'clasepaciente'=>'medicamentopaciente',
-                            'pacienteid'=>$paciente->id, 'objetos'=>$paciente->medicamentos_paciente])  
-                    </div>
-                </div>
-            </div>
-        </div>
         @include('pacientes.detalles.historiaclinica.seccion1',
-            [ 'titulo' => 'Antecedentes patológicos', 'nombrecampo'=>'Antecedente patológico',
-            'clase'=>'antecedentepatologico', 'clasepaciente'=>'antecedentepatologicopaciente',
-            'pacienteid'=>$paciente->id, 'objetos'=>$paciente->antecedentes_patologicos_paciente])
+        [ 'titulo' => 'Antecedentes familiares', 'nombrecampo'=>'Antecedente familiar',
+        'clase'=>'antecedentefamiliar', 'clasepaciente'=>'antecedentefamiliarpaciente',
+        'pacienteid'=>$paciente->id, 'objetos'=>$paciente->antecedentes_familiares_paciente])
+
+        @include('pacientes.detalles.historiaclinica.seccion1',
+        [ 'titulo' => 'Antecedentes patológicos', 'nombrecampo'=>'Antecedente patológico',
+        'clase'=>'antecedentepatologico', 'clasepaciente'=>'antecedentepatologicopaciente',
+        'pacienteid'=>$paciente->id, 'objetos'=>$paciente->antecedentes_patologicos_paciente])
+
+        @include('pacientes.detalles.historiaclinica.seccion1',
+        [ 'titulo' => 'Antecedentes quirúrgicos', 'nombrecampo'=>'Antecedente quirúrgico',
+        'clase'=>'antecedentequirurgico', 'clasepaciente'=>'antecedentequirurgicopaciente',
+        'pacienteid'=>$paciente->id, 'objetos'=>$paciente->antecedentes_quirurgicos_paciente])
+
+        @include('pacientes.detalles.historiaclinica.seccion1',
+        [ 'titulo' => 'Hábitos tóxicos', 'nombrecampo'=>'Hábito toxico',
+        'clase'=>'habitotoxico', 'clasepaciente'=>'habitotoxicopaciente',
+        'pacienteid'=>$paciente->id, 'objetos'=>$paciente->habitos_toxicos_paciente])
+
+        @include('pacientes.detalles.historiaclinica.seccion1',
+        [ 'titulo' => 'Medicamentos', 'nombrecampo'=>'Medicamento',
+        'clase'=>'medicamento', 'clasepaciente'=>'medicamentopaciente',
+        'pacienteid'=>$paciente->id, 'objetos'=>$paciente->medicamentos_paciente])
+
     </div>
         
 
@@ -71,16 +70,27 @@
         $(document).ready(function(){
             autocompletar("#alergia", "{{ route('administracion.clase.buscar', 'alergia') }}");
             filtrar("{{ route('historiaclinica.clase.filtrar', 'alergia') }}", "#buscaralergia", "#formularioalergia");
-            agregaritem("#nuevoalergia", "#formnuevoalergia", "{{ route('historiaclinica.clase.agregar', array($paciente->id, 'alergia') )}}", "#tablaalergia");      
+            agregaritem("#nuevoalergia", "#formnuevoalergia", "{{ route('historiaclinica.clase.agregar', array($paciente->id, 'alergia') )}}", "#tablaalergia");
 
+            autocompletar("#antecedentefamiliar", "{{ route('administracion.clase.buscar', 'antecedentefamiliar') }}");
+            filtrar("{{ route('historiaclinica.clase.filtrar', 'antecedentefamiliar') }}", "#buscarantecedentefamiliar", "#formularioantecedentefamiliar");
+            agregaritem("#nuevoantecedentefamiliar", "#formnuevoantecedentefamiliar", "{{ route('historiaclinica.clase.agregar', array($paciente->id, 'antecedentefamiliar') )}}", "#tablaantecedentefamiliar");
+
+            autocompletar("#antecedentepatologico", "{{ route('administracion.clase.buscar', 'antecedentepatologico') }}");
+            filtrar("{{ route('historiaclinica.clase.filtrar', 'antecedentepatologico') }}", "#buscarantecedentepatologico", "#formularioantecedentepatologico");
+            agregaritem("#nuevoantecedentepatologico", "#formnuevoantecedentepatologico", "{{ route('historiaclinica.clase.agregar', array($paciente->id, 'antecedentepatologico') )}}", "#tablaantecedentepatologico");
+
+            autocompletar("#antecedentequirurgico", "{{ route('administracion.clase.buscar', 'antecedentequirurgico') }}");
+            filtrar("{{ route('historiaclinica.clase.filtrar', 'antecedentequirurgico') }}", "#buscarantecedentequirurgico", "#formularioantecedentequirurgico");
+            agregaritem("#nuevoantecedentequirurgico", "#formnuevoantecedentequirurgico", "{{ route('historiaclinica.clase.agregar', array($paciente->id, 'antecedentequirurgico') )}}", "#tablaantecedentequirurgico");
+
+            autocompletar("#habitotoxico", "{{ route('administracion.clase.buscar', 'habitotoxico') }}");
+            filtrar("{{ route('historiaclinica.clase.filtrar', 'habitotoxico') }}", "#buscarhabitotoxico", "#formulariohabitotoxico");
+            agregaritem("#nuevohabitotoxico", "#formnuevohabitotoxico", "{{ route('historiaclinica.clase.agregar', array($paciente->id, 'habitotoxico') )}}", "#tablahabitotoxico");
 
             autocompletar("#medicamento", "{{ route('administracion.clase.buscar', 'medicamento') }}");
             filtrar("{{ route('historiaclinica.clase.filtrar', 'medicamento') }}", "#buscarmedicamento", "#formulariomedicamento");
-            agregaritem("#nuevomedicamento", "#formnuevomedicamento", "{{ route('historiaclinica.clase.agregar', array($paciente->id, 'medicamento') )}}", "#tablamedicamento");      
-            
-            autocompletar("#antecedentepatologico", "{{ route('administracion.clase.buscar', 'antecedentepatologico') }}");
-            filtrar("{{ route('historiaclinica.clase.filtrar', 'antecedentepatologico') }}", "#buscarantecedentepatologico", "#formularioantecedentepatologico");
-            agregaritem("#nuevoantecedentepatologico", "#formnuevoantecedentepatologico", "{{ route('historiaclinica.clase.agregar', array($paciente->id, 'antecedentepatologico') )}}", "#tablaantecedentepatologico"); 
+            agregaritem("#nuevomedicamento", "#formnuevomedicamento", "{{ route('historiaclinica.clase.agregar', array($paciente->id, 'medicamento') )}}", "#tablamedicamento");
         });
     </script>
 @endsection

@@ -13,14 +13,14 @@ class AntecedenteQuirurgicoPaciente extends Model
         return $this->belongsTo('App\Paciente');
     }
 
-    public function ant_quirurgicos()
+    public function ant_quirurgico()
     {
-        return $this->belongsTo('App\AntecedenteQuirurgicos');
+        return $this->belongsTo('App\AntecedenteQuirurgico');
     }
 
     public function mostrar_clase()
     {
-        return $this->ant_quirurgicos();
+        return $this->ant_quirurgico();
     }
 
     public function cargar_clasepaciente($claseid, $pacienteid, $observacion)

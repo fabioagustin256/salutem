@@ -55,7 +55,7 @@ class Paciente extends Model
 
     public function habitos_toxicos_paciente()
     {
-        return $this->hasMany('App\HabitoToxico');
+        return $this->hasMany('App\HabitoToxicoPaciente');
     }
 
     public function medicamentos_paciente()
