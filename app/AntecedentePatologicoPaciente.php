@@ -13,14 +13,14 @@ class AntecedentePatologicoPaciente extends Model
         return $this->belongsTo('App\Paciente');
     }
 
-    public function antecedente_patologico()
+    public function ant_patologico()
     {
         return $this->belongsTo('App\AntecedentePatologico');
     }
    
     public function mostrar_clase()
     {
-        return $this->antecedente_patologico();
+        return $this->ant_patologico();
     }
 
     public function cargar_clasepaciente($claseid, $pacienteid, $observacion)

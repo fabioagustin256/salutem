@@ -7,8 +7,9 @@ function agregaritem(nuevoitem, formulario, ruta, tabla){
             data: $(this).serialize(),
             success: function(data){
                 $(tabla).html(data);
+                $(nuevoitem).reload();
                 $(nuevoitem).collapse('toggle');
-                $(formulario)[0].reset();  
+
             },
             error: function(data){
                 console.log(data);

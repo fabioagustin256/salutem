@@ -23,6 +23,15 @@
                 </div>
             </div>
         </div>
+        @include('pacientes.detalles.historiaclinica.seccion1',
+        [ 'titulo' => 'Alergias', 'nombrecampo'=>'Alergia',
+        'clase'=>'alergia', 'clasepaciente'=>'alergiapaciente',
+        'pacienteid'=>$paciente->id, 'objetos'=>$paciente->alergias_paciente])
+
+
+
+
+
         <div class="card">
             <div class="card-header" role="tab" id="medicamentosHeaderId">
                 <h5 class="mb-0">
@@ -60,11 +69,17 @@
 
     <script>
         $(document).ready(function(){
+            autocompletar("#alergia", "{{ route('administracion.clase.buscar', 'alergia') }}");
+            filtrar("{{ route('historiaclinica.clase.filtrar', 'alergia') }}", "#buscaralergia", "#formularioalergia");
+            agregaritem("#nuevoalergia", "#formnuevoalergia", "{{ route('historiaclinica.clase.agregar', array($paciente->id, 'alergia') )}}", "#tablaalergia");      
+
+
             autocompletar("#medicamento", "{{ route('administracion.clase.buscar', 'medicamento') }}");
             filtrar("{{ route('historiaclinica.clase.filtrar', 'medicamento') }}", "#buscarmedicamento", "#formulariomedicamento");
             agregaritem("#nuevomedicamento", "#formnuevomedicamento", "{{ route('historiaclinica.clase.agregar', array($paciente->id, 'medicamento') )}}", "#tablamedicamento");      
             
             autocompletar("#antecedentepatologico", "{{ route('administracion.clase.buscar', 'antecedentepatologico') }}");
+            filtrar("{{ route('historiaclinica.clase.filtrar', 'antecedentepatologico') }}", "#buscarantecedentepatologico", "#formularioantecedentepatologico");
             agregaritem("#nuevoantecedentepatologico", "#formnuevoantecedentepatologico", "{{ route('historiaclinica.clase.agregar', array($paciente->id, 'antecedentepatologico') )}}", "#tablaantecedentepatologico"); 
         });
     </script>

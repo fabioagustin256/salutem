@@ -22,4 +22,17 @@ class HabitoToxicoPaciente extends Model
     {
         return $this->habitos_toxicos();
     }
+
+    public function cargar_clasepaciente($claseid, $pacienteid, $observacion)
+    {
+        try {
+            $this->habito_toxico_id = $claseid; 
+            $this->paciente_id = $pacienteid;
+            $this->observacion = $observacion;
+            $this->save();
+            return "Se agregó el hábito tóxico correctamente";
+        } catch (Excepction $e) {
+            return $e->getMessage();
+        }
+    }
 }

@@ -11,10 +11,21 @@ function nombre_modelo($clasepaciente)
     return 'App\\' . $clasepaciente;
 }
 
-function obtener_objetos($pacienteid, $clasepaciente)
+function obtener_objetos($clase)
 {
-    return nombre_modelo($clasepaciente)::where('paciente_id', $pacienteid)->get();
+    switch ($clase) {
+        case 'alergia':
+            $objetos = $paciente->medicamentos_paciente;
+            break;
+        case 'medicamento':
+            $objetos = $paciente->medicamentos_paciente;
+            break;
+    }
+    return $objetos;
 }
+
+
+
 
 class HistoriaClinicaController extends Controller
 {
@@ -29,16 +40,11 @@ class HistoriaClinicaController extends Controller
         $mensaje = $clasepaciente->cargar_clasepaciente($claseid, $pacienteid, $observacion);
         $paciente = Paciente::findorfail($pacienteid);
 
-        switch ($clase) {
-            case 'medicamento':
-                $objetos = $paciente->medicamentos_paciente;
-                $nombrecampo = 'Medicamento';
-                break;
-        }
+        $objetos = obtener_objetos($clase);
 
         $correcto = true;  
         
-        return view('pacientes.detalles.historiaclinica.listar1', compact('pacienteid', 'nombrecampo', 'clase', 'clasepaciente', 'objetos', 'correcto', 'mensaje'));
+        return view('pacientes.detalles.historiaclinica.tabla1', compact('pacienteid', 'clase', 'clasepaciente', 'objetos', 'correcto', 'mensaje'));
     }
 
 
@@ -54,8 +60,13 @@ class HistoriaClinicaController extends Controller
             $correcto = false;
             $mensaje = "No se puede eliminar el registro porque está asignado/a";
         }
-        $objetos = obtener_objetos($pacienteid, $clasepaciente);        
-        return view('pacientes.detalles.historiaclinica.tabla1', compact('clasepaciente', 'clase', 'pacienteid', 'objetos', 'correcto', 'mensaje'));
+        $paciente = Paciente::findorfail($pacienteid);
+        switch ($clase) {
+            case 'medicamento':
+                $objetos = $paciente->medicamentos_paciente;
+                break;
+        }     
+        return view('pacientes.detalles.historiaclinica.tabla1', compact('pacienteid', 'clase', 'clasepaciente', 'objetos', 'correcto', 'mensaje'));
     }
 
     public function buscar($clase, Request $request)
@@ -78,22 +89,37 @@ class HistoriaClinicaController extends Controller
 
     public function filtrar($clase, Request $request)
     {
-        $objeto = "objetoclase";
-
+        $objetoclase = "";
+           
         if ($request->buscarid)
         {
             $claseid = $request->buscarid;
             $modelo = nombre_modelo($clase);
             $objetoclase = $modelo::findorfail($claseid);
-            $mensaje1 = "Se agregó correctamente";
-            $correcto1 = true;
+            if ($objetoclase->nombre == $request->buscar)
+            {
+                $correcto = true;
+            }
+            else
+            {
+                $correcto = false;
+            }
+            
         }
         else 
         {
             $mensaje = 'Debe elegir un(a) ' . $clase;
-            $correcto1 = false;    
+            $correcto = false;    
         }
+        if($correcto)        
+        {
+            $mensaje = "Se agregó correctamente";
+        }
+        else
+        {
+            $mensaje = 'Debe elegir un(a) ' . $clase . ' del listado';
+        } 
 
-        return view('pacientes.detalles.historiaclinica.agregaritem', compact('clase', 'objetoclase', 'mensaje1', 'correcto1'));
+        return view('pacientes.detalles.historiaclinica.agregaritem', compact('clase', 'objetoclase', 'mensaje', 'correcto'));
     }
 }
