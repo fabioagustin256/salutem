@@ -30,17 +30,17 @@
         'pacienteid'=>$paciente->id, 'objetos'=>$paciente->alergias_paciente])
 
         @include('pacientes.detalles.historiaclinica.seccion1',
-        [ 'titulo' => 'Antecedentes familiares', 'nombrecampo'=>'Antecedente familiar',
+        [ 'titulo' => 'Antecedentes familiares', 'nombrecampo'=>'Ant. familiar',
         'clase'=>'antecedentefamiliar', 'clasepaciente'=>'antecedentefamiliarpaciente',
         'pacienteid'=>$paciente->id, 'objetos'=>$paciente->antecedentes_familiares_paciente])
 
         @include('pacientes.detalles.historiaclinica.seccion1',
-        [ 'titulo' => 'Antecedentes patológicos', 'nombrecampo'=>'Antecedente patológico',
+        [ 'titulo' => 'Antecedentes patológicos', 'nombrecampo'=>'Ant. patológico',
         'clase'=>'antecedentepatologico', 'clasepaciente'=>'antecedentepatologicopaciente',
         'pacienteid'=>$paciente->id, 'objetos'=>$paciente->antecedentes_patologicos_paciente])
 
         @include('pacientes.detalles.historiaclinica.seccion1',
-        [ 'titulo' => 'Antecedentes quirúrgicos', 'nombrecampo'=>'Antecedente quirúrgico',
+        [ 'titulo' => 'Antecedentes quirúrgicos', 'nombrecampo'=>'Ant.quirúrgico',
         'clase'=>'antecedentequirurgico', 'clasepaciente'=>'antecedentequirurgicopaciente',
         'pacienteid'=>$paciente->id, 'objetos'=>$paciente->antecedentes_quirurgicos_paciente])
 

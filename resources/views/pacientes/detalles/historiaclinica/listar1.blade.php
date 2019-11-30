@@ -17,9 +17,16 @@
                 <form method="POST" id="buscar{{ $clase}}">
                     @csrf
 
-                    @include('formularios.autocompletado', ['nombrecampo'=>$nombrecampo, 'campo'=>$clase])           
+                    @include('formularios.autocompletado', ['nombrecampo'=>$nombrecampo, 'campo'=>$clase])
+       
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-1">
+                <div class="custom-control custom-checkbox" >
+                    <input type="checkbox" class="custom-control-input" name="nuevo" id="nuevo">
+                    <label class="custom-control-label" for="nuevo">Nuevo</label>
+                </div>     
+            </div>
+            <div class="col-sm-1 text-left">
                     <button type="submit" class="btn btn-success">Elegir</button>
                 </form>
             </div>

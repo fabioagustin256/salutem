@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Paciente;
+use App\Traits\NuevoObjetoTrait;
 
 use Illuminate\Http\Request;
 
@@ -13,7 +14,8 @@ function nombre_modelo($clasepaciente)
 
 function obtener_objetos($clase, $paciente)
 {
-    switch ($clase) {
+    switch ($clase) 
+    {
         case 'alergia':
             $objetos = $paciente->alergias_paciente;
             break;
@@ -39,6 +41,8 @@ function obtener_objetos($clase, $paciente)
 
 class HistoriaClinicaController extends Controller
 {
+    use NuevoObjetoTrait;
+
     public function agregar($pacienteid, $clase, Request $request)
     {
         $clasepaciente = $clase . 'paciente';              
@@ -46,8 +50,8 @@ class HistoriaClinicaController extends Controller
         $observacion = $request->observacion; 
 
         $modelo = nombre_modelo($clasepaciente);
-        $clasepaciente = new $modelo();
-        $mensaje = $clasepaciente->cargar_clasepaciente($claseid, $pacienteid, $observacion);
+        $clasepacienteobjeto = new $modelo();
+        $mensaje = $clasepacienteobjeto->cargar_clasepaciente($claseid, $pacienteid, $observacion);
         $paciente = Paciente::findorfail($pacienteid);
 
         $objetos = obtener_objetos($clase, $paciente);
@@ -55,8 +59,9 @@ class HistoriaClinicaController extends Controller
         return view('pacientes.detalles.historiaclinica.tabla1', compact('pacienteid', 'clase', 'clasepaciente', 'objetos', 'correcto', 'mensaje'));
     }
 
-    public function quitar($pacienteid, $clasepaciente, $clase, $id)
+    public function quitar($pacienteid, $clasepacienteid, $clase, $id)
     {
+        $clasepaciente = $clase . 'paciente';  
         $modelo = nombre_modelo($clasepaciente);
         $objeto = $modelo::findorfail($id);
         try {
@@ -93,36 +98,51 @@ class HistoriaClinicaController extends Controller
     public function filtrar($clase, Request $request)
     {
         $objetoclase = "";
-           
-        if ($request->buscarid)
+        $modelo = nombre_modelo($clase);
+
+        if($request->nuevo)
         {
-            $claseid = $request->buscarid;
-            $modelo = nombre_modelo($clase);
-            $objetoclase = $modelo::findorfail($claseid);
-            if ($objetoclase->nombre == $request->buscar)
+            $objeto = $request->buscar;
+            $resultado = $this->nuevo_objeto_clase($clase, $objeto);
+            $mensaje = $resultado['mensaje'];
+            $correcto = $resultado['correcto'];
+            if($correcto)
             {
-                $correcto = true;
+                $objetoclase = $resultado['objetoclase'];
+                $objetoclase = $modelo::findorfail($objetoclase->id
+            );
             }
-            else
-            {
-                $correcto = false;
-            }
-            
-        }
-        else 
-        {
-            $mensaje = 'Debe elegir un(a) ' . $clase;
-            $correcto = false;    
-        }
-        if($correcto)        
-        {
-            $mensaje = "Se agregó correctamente";
         }
         else
         {
-            $mensaje = 'Debe elegir un(a) ' . $clase . ' del listado';
-        } 
-
+            if ($request->buscarid)
+            {
+                $claseid = $request->buscarid;                
+                $objetoclase = $modelo::findorfail($claseid);
+                if ($objetoclase->nombre == $request->buscar)
+                {
+                    $correcto = true;
+                }
+                else
+                {
+                    $correcto = false;
+                }
+                
+            }
+            else 
+            {
+                $mensaje = 'Debe elegir un(a) ' . $clase;
+                $correcto = false;    
+            }
+            if($correcto)        
+            {
+                $mensaje = "Se agregó correctamente";
+            }
+            else
+            {
+                $mensaje = 'Debe elegir un(a) ' . $clase . ' del listado';
+            }             
+        }       
         return view('pacientes.detalles.historiaclinica.agregaritem', compact('clase', 'objetoclase', 'mensaje', 'correcto'));
     }
 }
