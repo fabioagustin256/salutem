@@ -8,7 +8,7 @@
         </div>
         <div class="form-group">    
             <label for="observacion">Observación</label>
-            <textarea class="form-control" name="observacion" rows="3"></textarea></div>      
+            <textarea class="form-control" name="observacion" rows="3"></textarea>      
         </div>
         <button type="submit" class="btn btn-success">Guardar</button>
     @endif

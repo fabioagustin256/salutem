@@ -31,6 +31,11 @@ class Paciente extends Model
         return number_format($this->dni, 0, ',', '.') . " - " . $this->nombre . " " . $this->apellido . " - " . $departamento;
     }
 
+    public function consultas()
+    {
+        return $this->hasMany('App\Consulta');
+    }
+
     // Campos de historia clínica
 
     public function alergias_paciente()
@@ -62,6 +67,5 @@ class Paciente extends Model
     {
         return $this->hasMany('App\MedicamentoPaciente');
     }
-
 
 }

@@ -54,6 +54,21 @@
         'clase'=>'medicamento', 'clasepaciente'=>'medicamentopaciente',
         'pacienteid'=>$paciente->id, 'objetos'=>$paciente->medicamentos_paciente])
 
+        <div class="card">
+            <div class="card-header" role="tab" id="consultasHeaderId">
+                <h5 class="mb-0">
+                    <a data-toggle="collapse" data-parent="#accordianId" href="#consultasContentId" aria-expanded="true" aria-controls="consultasContentId">
+                        Consultas
+                    </a>
+                </h5>
+            </div>
+            <div id="consultasContentId" class="collapse" role="tabpanel" aria-labelledby="consultasHeaderId">
+                <div class="card-body">
+                    @include('pacientes.detalles.consultas.listar', ['paciente' => $paciente])
+                </div>
+            </div>
+        </div>
+
     </div>
         
 
@@ -65,9 +80,14 @@
     <script src="{{ url('js/agregaritem.js') }}"></script>
     <script src="{{ url('js/quitaritem.js') }}"></script>
     <script src="{{ url('js/filtrar.js') }}"></script>
+    <script src="{{ url('js/calendarioes.js') }}"></script>
+    
 
     <script>
         $(document).ready(function(){
+            
+            // Historia Clínica
+
             autocompletar("#alergia", "{{ route('administracion.clase.buscar', 'alergia') }}");
             filtrar("{{ route('historiaclinica.clase.filtrar', 'alergia') }}", "#buscaralergia", "#formularioalergia");
             agregaritem("#nuevoalergia", "#formnuevoalergia", "{{ route('historiaclinica.clase.agregar', array($paciente->id, 'alergia') )}}", "#tablaalergia");
@@ -91,6 +111,12 @@
             autocompletar("#medicamento", "{{ route('administracion.clase.buscar', 'medicamento') }}");
             filtrar("{{ route('historiaclinica.clase.filtrar', 'medicamento') }}", "#buscarmedicamento", "#formulariomedicamento");
             agregaritem("#nuevomedicamento", "#formnuevomedicamento", "{{ route('historiaclinica.clase.agregar', array($paciente->id, 'medicamento') )}}", "#tablamedicamento");
+            
+            // Consultas
+
+            $("#fecha").datepicker();
+            agregaritem("#nuevaconsulta", "#formnuevaconsulta", "{{ route('consultas.agregar', $paciente) }}", "#tablaconsulta");
+        
         });
     </script>
 @endsection

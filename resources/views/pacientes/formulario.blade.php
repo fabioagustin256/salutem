@@ -37,7 +37,7 @@
             <input type="text" class="form-control" name="apellido" value="{{ isset($paciente)?$paciente->apellido:old('apellido') }}">
         </div>
         <div class="form-group">
-            <label for="fecha" class="col-form-label">Fecha de nacimiento</label>
+            <label for="fecha_nacimiento" class="col-form-label">Fecha de nacimiento</label>
             <input type="text" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" value="{{ isset($paciente)?date('d/m/Y', strtotime($paciente->fecha_nacimiento)):old('fecha_nacimiento') }}">
         </div>
         <div class="form-group">
