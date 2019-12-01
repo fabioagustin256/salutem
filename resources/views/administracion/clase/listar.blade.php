@@ -10,7 +10,7 @@
             <form method="POST" id="buscarclase">
                 @csrf
 
-                @include('formularios.autocompletado', ['campo'=> 'buscar'])           
+                @include('formularios.autocompletado', ['nombrecampo'=>'Buscar', 'campo'=> 'buscar'])           
         </div>
         <div class="col-sm-1 text-left">
                 <button type="submit" class="btn btn-success">Filtrar</button>
@@ -59,7 +59,7 @@
     <script src="{{ url('js/resetearfiltros.js') }}"></script>
 
     <script>
-        $(document).ready(function(){
+        $(document).ready(function(){                        
             agregaritem("#nuevo", "#formnuevo", "{{ route('inicio')}}" + "/administracion/agregar/" + "{{ $clase }}" , "#tablaclase");
             autocompletar("#buscar", "{{ route('administracion.clase.buscar',  $clase) }}");
             filtrar("{{ route('administracion.clase.filtrar', $clase) }}", "#buscarclase", "#tablaclase");  

@@ -25,9 +25,43 @@ class Paciente extends Model
     {
         return $this->belongsTo('App\Ciudad');
     }
-
+    
     public function mostrar(){
         $departamento = empty($this->ciudad)? "Sin datos": $this->ciudad->nombre . " - " . $this->ciudad->provincia->nombre;
         return number_format($this->dni, 0, ',', '.') . " - " . $this->nombre . " " . $this->apellido . " - " . $departamento;
     }
+
+    // Campos de historia clínica
+
+    public function alergias_paciente()
+    {
+        return $this->hasMany('App\AlergiaPaciente');
+    }
+
+    public function antecedentes_familiares_paciente()
+    {
+        return $this->hasMany('App\AntecedenteFamiliarPaciente');
+    }
+
+    public function antecedentes_patologicos_paciente()
+    {
+        return $this->hasMany('App\AntecedentePatologicoPaciente');
+    }
+
+    public function antecedentes_quirurgicos_paciente()
+    {
+        return $this->hasMany('App\AntecedenteQuirurgicoPaciente');
+    }
+
+    public function habitos_toxicos_paciente()
+    {
+        return $this->hasMany('App\HabitoToxicoPaciente');
+    }
+
+    public function medicamentos_paciente()
+    {
+        return $this->hasMany('App\MedicamentoPaciente');
+    }
+
+
 }

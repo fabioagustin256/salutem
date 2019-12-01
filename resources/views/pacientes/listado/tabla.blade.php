@@ -28,7 +28,7 @@
                                 <a class="btn btn-success btn-sm" href="{{ route('pacientes.recuperar_eliminado', $paciente->id) }}" role="button">Recuperar</a>
                             @else 
                                 <a class="btn btn-warning btn-sm" href="{{ route('pacientes.edit', $paciente) }}" role="button">Editar</a>
-                                <a class="btn btn-primary btn-sm" href="{{ route('pacientes.show', $paciente) }}" role="button">Detalle</a>
+                                <a class="btn btn-primary btn-sm" href="{{ route('pacientes.show', $paciente) }}" role="button">Historia Clínica</a>
                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#eliminar" data-nombre="{{ $paciente->nombre }}" data-apellido="{{ $paciente->apellido }}" data-pacienteid="{{ $paciente->id }}">Eliminar</button>
                             @endif
                         </td>
