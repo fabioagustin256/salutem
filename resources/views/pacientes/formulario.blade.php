@@ -50,8 +50,10 @@
         </div>
         <div class="form-group">
             <label for="estado_civil" class="col-form-label">Estado Civil</label>
-            <div id="estado_civil">
-            </div>
+            <select name="estado_civil" id="estado_civil" class="form-control">
+                <span id="estado_civil">
+                </span>
+            </select>
         </div>
         <div class="form-group">
             <label for="ocupacion" class="col-form-label">Ocupación</label>
