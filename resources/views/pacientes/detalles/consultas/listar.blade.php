@@ -15,15 +15,15 @@
             @csrf
             <div class="form-group">
                 <label for="fecha" class="col-form-label">Fecha</label>
-                <input type="text" class="form-control" id="fecha" name="fecha">
+                <input type="text" class="form-control" id="fecha" name="fecha" required>
             </div>
             <div class="form-group">    
                 <label for="motivo">Motivo</label>
-                <textarea class="form-control" name="motivo" rows="3"></textarea>     
+                <textarea class="form-control" name="motivo" rows="3" required></textarea>     
             </div>
             <div class="form-group">    
                 <label for="tratamiento">Tratamiento</label>
-                <textarea class="form-control" name="tratamiento" rows="3"></textarea>   
+                <textarea class="form-control" name="tratamiento" rows="3" required></textarea>   
             </div>
             <button type="submit" class="btn btn-success">Guardar</button>
         </form>

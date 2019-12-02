@@ -12,12 +12,6 @@ class ConsultaController extends Controller
 {
     public function agregar(Paciente $paciente, Request $request)
     {
-        $request->validate([
-            'fecha' => 'required',
-            'motivo' => 'required',
-            'tratamiento' => 'required'
-        ]);
-    
         try {
             $consulta = new Consulta();
             $consulta->fecha = Carbon::createFromFormat('d/m/Y', $request->fecha)->format('Y-m-d');
