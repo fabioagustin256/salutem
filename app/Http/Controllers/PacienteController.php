@@ -126,7 +126,7 @@ class PacienteController extends Controller
         cargar_paciente($paciente, $request);
         $mensaje = "Se actualizaron los datos de " . $paciente->mostrar();
         $correcto = true;    
-        return view('pacientes.formulario', compact('mensaje', 'correcto'));
+        return view('pacientes.formulario', compact('$paciente','mensaje', 'correcto'));
     }
 
     /**

@@ -43,6 +43,7 @@
         <div class="form-group">
             <label for="sexo" class="col-form-label">Sexo</label>
             <select name="sexo" id="sexo" class="form-control">
+                
                 <option value="Sin información">Sin información</option>  
                 <option value="Masculino">Masculino</option>  
                 <option value="Femenino">Femenino</option>  
@@ -50,10 +51,8 @@
         </div>
         <div class="form-group">
             <label for="estado_civil" class="col-form-label">Estado Civil</label>
-            <select name="estado_civil" id="estado_civil" class="form-control">
-                <span id="estado_civil">
-                </span>
-            </select>
+            <div id="estado_civil">
+            </div>
         </div>
         <div class="form-group">
             <label for="ocupacion" class="col-form-label">Ocupación</label>
@@ -98,9 +97,9 @@
     <script>
         $(document).ready(function(){
             $("#fecha_nacimiento").datepicker();
-            elegircampo("estado_civil", "{{ route('estadosciviles.listar') }}");
-            elegircampo("ocupacion", "{{ route('ocupaciones.listar') }}");
-            elegircampo("obra_social", "{{ route('obrassociales.listar') }}");              
+            elegircampo("estado_civil", "{{ route('estadosciviles.listar')}}", {{ isset($paciente->estado_civil)?$paciente->estado_civil_id:"" }});
+            elegircampo("ocupacion", "{{ route('ocupaciones.listar') }}", {{ isset($paciente->ocupacion)?$paciente->ocupacion_id:"" }});
+            elegircampo("obra_social", "{{ route('obrassociales.listar') }}", {{ isset($paciente->obra_social)?$paciente->obra_social_id:"" }});              
             elegirciudad("{{ route('provincias.listar') }}", "{{ route('inicio')}}" + "/ciudades/ciudadesprovincia/");
         });
     </script>
