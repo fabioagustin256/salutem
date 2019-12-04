@@ -22,6 +22,10 @@ function cargar_paciente(Paciente $paciente, Request $request)
         {
             $paciente->fecha_nacimiento = Carbon::createFromFormat('d/m/Y', $request->fecha_nacimiento)->format('Y-m-d');
         }
+        else
+        {
+            $paciente->fecha_nacimiento = null;
+        }
         $paciente->sexo = $request->sexo;
         $paciente->estado_civil_id = $request->estado_civil;
         $paciente->ocupacion_id = $request->ocupacion;
@@ -126,7 +130,7 @@ class PacienteController extends Controller
         cargar_paciente($paciente, $request);
         $mensaje = "Se actualizaron los datos de " . $paciente->mostrar();
         $correcto = true;    
-        return view('pacientes.formulario', compact('$paciente','mensaje', 'correcto'));
+        return view('pacientes.formulario', compact('paciente','mensaje', 'correcto'));
     }
 
     /**
