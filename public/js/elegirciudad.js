@@ -1,4 +1,5 @@
 function elegirciudad(ruta, ruta2, campo){
+    console.log(valor2);
     $.ajax({
         url: ruta,
         type: "GET",
@@ -6,8 +7,8 @@ function elegirciudad(ruta, ruta2, campo){
             var texto = '<option value="">Seleccione una provincia</option>';                    
             for(var i=0; i<data.length;i++){
                 texto += '<option value="' + data[i].id + '">' + data[i].nombre + '</option>';                            
-            }
-            $('#provincia').html(texto);                        
+            }            
+            $('#provincia').html(texto);                  
         }, 
         error: function(data){
             console.log(data);
@@ -28,6 +29,7 @@ function elegirciudad(ruta, ruta2, campo){
                         texto2 += '<option value="' + data[i].id + '">' + data[i].nombre + '</option>';                            
                     }
                     $('#ciudad').html(texto2);
+                    
                 },
                 error: function(data){
                     console.log(data);

@@ -11,8 +11,7 @@ function elegircampo(campo, ruta, valor){
             }
             texto += '</select>';            
             $('#' + campo ).html(texto);
-            $('#' + campo  + '> option[value="' + valor + '"]').attr('selected', 'selected');
-                                    
+            $('#' + campo  + '> option[value="' + valor + '"]').attr('selected', 'selected');                                   
         }
     });
 };

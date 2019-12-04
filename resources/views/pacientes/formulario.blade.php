@@ -123,6 +123,7 @@
     </form>
 @endsection
 
+
 @section('script')
     <script src="{{ url('js/calendarioes.js') }}"></script>
     <script src="{{ url('js/elegircampo.js') }}"></script>
